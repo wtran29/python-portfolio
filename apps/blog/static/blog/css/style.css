@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Freight Text Light';
+    src: url('../font/Freight Text Light.ttf');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../font/Source Sans Pro Semibold.ttf');
+}
+@font-face {
+    font-family: 'Source Sans ExtraLight';
+    src: url('../font/Source Sans Pro ExtraLight.ttf');
+}
+
+.jumbotron {
+    background-image: url('../../blog/images/billy.jpg');
+    background-size: cover;
+}
+
+.blog-title-main {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.4em;
+    letter-spacing: -0.2rem;
+    color: black;
+}
+
+.blog-title-main:hover {
+    color: #007bff;
+    text-decoration-line: none;
+}
+
+.blog-date-main {
+    font-family: 'Source Sans ExtraLight', sans-serif;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.blog-summary {
+    font-family: 'Freight Text Light', sans-serif;
+    font-size: 1.1em;
+}
+
+.blog-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 4em;
+    letter-spacing: -0.2rem;
+}
+
+.blog-date {
+    font-family: 'Source Sans ExtraLight', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.blog-body {
+    font-family: 'Freight Text Light', sans-serif;
+    font-size: 1.4em;
+}
+

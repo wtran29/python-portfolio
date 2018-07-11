@@ -5,6 +5,7 @@ from .models import Work
 
 def index(request):
     context = {
-        'projects': Work.objects
+        'projects': Work.objects.all().order_by('-created_at')
     }
+
     return render(request, 'work/index.html', context)

@@ -1,0 +1,103 @@
+/*Modal CSS section*/
+.modal-body h5 {
+    margin: 1rem 0;
+}
+
+.modal-body li {
+    font-size: 0.9em;
+}
+.modal-body .tech-tag {
+    color: white;
+    margin-bottom: unset;
+}
+
+.modal-footer {
+    justify-content: unset!important;
+    display: unset!important;
+}
+.tech-box {
+    width: 19rem;
+}
+
+.tech-box p {
+    font-size: 0.8rem;
+}
+/* Jumbotron animation*/
+/* .jumbotron-heading {
+    position: relative;
+    -webkit-animation-name: name;
+    -webkit-animation-duration: 4s;
+    animation-name: name;
+    animation-duration: 3s;
+}
+*/
+
+/* Safari 4.0 - 8.0 */
+/*
+@-webkit-keyframes name {
+    0%   {left:100%; top:0px;}
+    100% {left:0%; top:0px;}
+}
+*/
+/* Standard syntax */
+/*
+@keyframes name {
+    0%   {left:100%; top:0px;}
+    100% {left:0%; top:0px;}
+}
+*/
+/* SlideRight for jquery for sections */
+.element-to-hide{
+    visibility:hidden;
+}
+
+.slideRight {
+    visibility: visible;
+    animation-name: slideRight;
+    -webkit-animation-name: slideRight;
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+}
+@keyframes slideRight {
+    0% {
+        transform: translateX(-150%);
+    }
+    50% {
+        transform: translateX(8%);
+    }
+    65% {
+        transform: translateX(-4%);
+    }
+    80% {
+        transform: translateX(4%);
+    }
+    95% {
+        transform: translateX(-2%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+@-webkit-keyframes slideRight {
+    0% {
+        -webkit-transform: translateX(-150%);
+    }
+    50% {
+        -webkit-transform: translateX(8%);
+    }
+    65% {
+        -webkit-transform: translateX(-4%);
+    }
+    80% {
+        -webkit-transform: translateX(4%);
+    }
+    95% {
+        -webkit-transform: translateX(-2%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+

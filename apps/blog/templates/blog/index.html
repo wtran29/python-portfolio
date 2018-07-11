@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>William Tran | Thoughts, tips, tricks?</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+</head>
+<body>
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">William Tran</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://github.com/wtran29">GitHub</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% static 'work/images/resume.pdf' %}">Resume</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Who Am I
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <p class="dropdown-item"></p>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">About Me</a>
+                        <a class="dropdown-item" href="#">Projects</a>
+                        <a class="dropdown-item" href="#">Technologies</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    <section class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading display-4">Welcome to Billy's Blog</h1>
+            <p class="lead text-muted">Ramble, Ramble, Ramble...</p>
+        </div>
+    </section>
+
+    <div class="container px-5">
+        <h2 class="blog-title pt-4">Newest Posts</h2>
+        <hr>
+        {% for blog in blogs %}
+        <p class="blog-date-main text-muted pt-4">{{ blog.date_only }}</p>
+        <h4><a class="blog-title-main" href="blog/{{ blog.id }}">{{ blog.title }}</a></h4>
+        <!--<img class="img-fluid blog-img" src="{{ blog.image.url }}" height=200 width=200>-->
+        <!--<br>-->
+        <p class="blog-summary pb-4">{{ blog.summary }}</p>
+        <hr>
+        {% endfor %}
+    </div>
+
+</main>
+
+<footer class="page-footer font-small text-muted pt-4 mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 py-5">
+                <div class="mb-5 text-center">
+                    <a style="color: gray; text-decoration: none;" href="mailto:wtran4hire@gmail.com">
+                        <i class="fas fa-envelope fa-lg white-text mr-md-5 mr-3 fa-5x"></i>
+                    </a>
+                    <a style="color: navy; text-decoration: none;" href="https://www.linkedin.com/in/william-tran">
+                       <i class="fab fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-5x"></i>
+                    </a>
+                    <a style="color: black; text-decoration: none;" class="grey-text text-lighten-3" href="https://github.com/wtran29">
+                        <i class="fab fa-github-alt fa-lg white-text mr-md-5 mr-3 fa-5x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>William Tran &copy; {% now "Y" %} Copyright</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</body>
+</html>
