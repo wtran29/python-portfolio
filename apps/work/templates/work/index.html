@@ -26,40 +26,35 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">William Tran</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="http://github.com/wtran29">GitHub</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% static 'work/images/resume.pdf' %}">Resume</a>
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tech">Technologies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="mailto:wtran4hire@gmail.com">Contact</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Who Am I
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#about">About Me</a>
-                        <a class="dropdown-item" href="#projects">Projects</a>
-                        <a class="dropdown-item" href="#tech">Technologies</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#connect">Connect</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <!--<form class="form-inline my-2 my-lg-0">-->
+                <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+                <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+            <!--</form>-->
         </div>
     </nav>
 </header>
@@ -68,13 +63,13 @@
 
     <section class="jumbotron jumbotron-fluid text-center">
         <div class="container">
-            <h1 class="jumbotron-heading" data-aos="fade-left">William Tran</h1>
-            <p class="lead text-muted">DEDICATED, FOCUSED and <span class="font-italic">extremely</span> DRIVEN. I am
-                here to solve problems and turn ideas into reality. Let's get ready to Django!</p>
+            <h1 class="jumbotron-heading">William Tran</h1>
+            <p class="lead text-muted">DEDICATED, FOCUSED, and DRIVEN</p>
+            <p>Here to solve problems and turn ideas into reality. Let's get ready to Django!</p>
+            <img src="{% static 'work/images/profile.jpg' %}" height="300">
             <p>
                 <a href="mailto:wtran4hire@gmail.com" class="btn btn-danger my-2">EMAIL ME</a>
             </p>
-            <img src="{% static 'work/images/profile.jpg' %}" height="300">
         </div>
     </section>
     <section id="about">
@@ -86,52 +81,57 @@
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up">
                     <i class="fas fa-code fa-lg fa-5x py-4"></i>
                     <h5>Software Development</h5>
-                    <p>Currently I'm focused on Python/Django programming but have
-                        experience in Java and MEAN development. I enjoy solving problems through logic and creativity.
-                        I am able to perform SQL queries, CRUD operations, database setup, and deployment. I follow
-                        Object Oriented Programming, handling logic through MTV and MVC methods.
+                    <p>Currently I'm focused on Python/Django programming but can build in Java/Spring Boot and MEAN stack as well.
+                        I enjoy the logical and creative ways to solve problems in building apps. I follow Object Oriented Programming
+                        methods, and handling logic through MTV and MVC.
                     </p>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="1000">
                     <i class="fas fa-dollar-sign fa-lg fa-5x py-4"></i>
                     <h5>Finance and Accounting</h5>
                     <p>I have 10+ years combined of Financial Analysis and Accounting experience. I've worked in various
-                        industries including Real Estate, Food and Beverage, and Banking. My experiences
-                        has helped me incorporate my analytical skills, attention to detail and work well with
+                        industries, including Real Estate, Food and Beverage, and Banking. My experiences
+                        has helped me incorporate my analytical skills, attention to detail and collaborate with
                         others in a professional setting.
                     </p>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="2000">
                     <i class="fas fa-suitcase fa-lg fa-5x py-4"></i>
                     <h5>Professional Goals</h5>
-                    <p>I invest in continuous learning and dedicate myself to improving my craft. My goal is to build purposeful and
-                        fun apps that would make a positive impact in peoples' lives. I seek to incorporate Data Science
-                        in the near future to create apps for data analytics and improve process for various industries.
+                    <p>My goal is to build purposeful and fun apps that provide value. I seek to incorporate Data Science
+                        in the near future to create apps for data analytics and improve process for various industries. Currently,
+                        I'm exploring the capabilities of Machine Learning and Artificial Intelligence.
                     </p>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="3000">
                     <i class="fas fa-user fa-lg fa-5x py-4"></i>
                     <h5>Personal Goals</h5>
-                    <p>I would like to be more present and build stronger relationships between family and friends. Make
-                        the right trade-offs to create a perfect life. Have the opportunity to choose how my time could be spent.
-                        Primarily, the goal is to be an absolute and complete person.
+                    <p>I hope to make a positive impact in peoples' lives through software development. I would like to
+                        be more present and build stronger relationships between family and friends. I continue to challenge myself and
+                        dedicate to improving my craft. I always look for an opportunity to grow and hope to wake up one day feeling fulfilled.
                     </p>
                 </div>
-                <div class="col-lg-12 text-center py-2" data-aos="fade-up" data-aos-duration="3000">
-                    <i class="far fa-eye fa-lg fa-5x py-4"></i>
+                <div class="col-lg-12 text-center pb-2" data-aos="fade-up" data-aos-duration="2000">
+                    <i class="far fa-eye fa-lg fa-5x pb-4"></i>
                     <h2>Vision</h2>
                     <p>To bring value through functionality, innovation and design.</p>
+                </div>
+                <div class="col-12">
+                    <div class="text-center">
+                        <a class="btn btn-dark mx-1" href="{% static 'work/images/resume.pdf' %}" data-aos="fade-up-right" data-aos-duration="2000">Download Resume</a>
+                        <a class="btn btn-outline-dark mx-1" href="http://github.com/wtran29" data-aos="fade-up-left" data-aos-duration="2000">Visit My GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="projects">
-        <div class="album py-5 mt-5 bg-light">
+    <section class="py-5 mt-5 bg-light" id="projects">
+        <!--<div>-->
             <div class="container">
                 <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                     <h1>//Projects</h1>
                 </div>
-                <div class="row">
+                <div class="row pt-3">
                     {% for project in projects %}
                     <div class="col-md-4" data-aos="fade-up">
                         <div class="card mb-4 box-shadow">
@@ -218,7 +218,7 @@
                     {% endfor %}
                 </div>
             </div>
-        </div>
+        <!--</div>-->
     </section>
     <section id="tech">
         <div class="container py-5">
@@ -282,15 +282,28 @@
                         <div class="col-sm-4"><i class="devicon-google-plain colored fa-3x"></i><p>Google</p></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 </main>
+<div class="MainContainer">
 
-<section class="bg-light">
+  <div class="ParallaxContainer">
+
+  </div>
+
+  <div class="ContentContainer">
+    <div class="Content">
+
+    </div>
+  </div>
+</div>
+<section class="bg-light" id="connect">
     <div class="container">
         <div class="row">
             <div class="col-md-12 pt-5">
+                <h3 class="text-center pb-2 pr-5">Connect with me</h3>
                 <div class="mb-5 text-center">
                     <a style="color: gray; text-decoration: none;" href="mailto:wtran4hire@gmail.com">
                         <i class="fas fa-envelope fa-lg white-text mr-md-5 mr-3 fa-5x"></i>
@@ -306,6 +319,7 @@
         </div>
     </div>
 </section>
+
 <footer class="page-footer font-small text-muted bg-dark pt-2">
     <div class="container py-1">
         <p class="float-right">
@@ -318,9 +332,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
 crossorigin="anonymous"></script>
@@ -328,8 +343,34 @@ crossorigin="anonymous"></script>
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
 crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Typist/1.2/typist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      // Add scrollspy to <body>
+      $('body').scrollspy({target: ".navbar", offset: 50});
 
+      // Add smooth scrolling on all links inside the navbar
+      $("#navbarSupportedContent a").on('click', function(event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+
+          // Store hash
+          var hash = this.hash;
+
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 1000, function(){
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        }  // End if
+      });
+    });
     $(function() {
         $(window).scroll(function() {
             $('.animation-test').each(function() {
@@ -345,6 +386,9 @@ crossorigin="anonymous"></script>
             });
         });
     });
+
+
+
     AOS.init();
 </script>
 

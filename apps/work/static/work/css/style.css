@@ -1,4 +1,8 @@
 /*Modal CSS section*/
+body {
+    position: relative;
+}
+
 .modal-body h5 {
     margin: 1rem 0;
 }
@@ -23,29 +27,29 @@
     font-size: 0.8rem;
 }
 /* Jumbotron animation*/
-/* .jumbotron-heading {
+.jumbotron-heading {
     position: relative;
     -webkit-animation-name: name;
     -webkit-animation-duration: 4s;
     animation-name: name;
     animation-duration: 3s;
 }
-*/
+
 
 /* Safari 4.0 - 8.0 */
-/*
+
 @-webkit-keyframes name {
     0%   {left:100%; top:0px;}
     100% {left:0%; top:0px;}
 }
-*/
+
 /* Standard syntax */
-/*
+
 @keyframes name {
     0%   {left:100%; top:0px;}
     100% {left:0%; top:0px;}
 }
-*/
+
 /* SlideRight for jquery for sections */
 .element-to-hide{
     visibility:hidden;
@@ -101,3 +105,31 @@
     }
 }
 
+/* Parallax */
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+}
+
+.ParallaxContainer {
+  background-image: url('../../work/images/pool.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  height: 100vh;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+}
+/*
+.ContentContainer {
+  display: block;
+  position: relative;
+  background-color: white;
+  z-index: 1;
+}
+*/
