@@ -23,55 +23,62 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">William Tran</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                 aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tech">Technologies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/blog">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mailto:wtran4hire@gmail.com">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#connect">Connect</a>
-                </li>
-            </ul>
-            <!--<form class="form-inline my-2 my-lg-0">-->
-                <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-                <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-            <!--</form>-->
+    <section class="parallax-main">
+        <div class="parallax-top text-center">
+            <nav class="navbar navbar-trans navbar-expand-lg navbar-dark navbar-inverse">
+                <a class="navbar-brand" href="/">William Tran</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tech">Technologies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:wtran4hire@gmail.com">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#connect">Connect</a>
+                        </li>
+                    </ul>
+                    <!--<form class="form-inline my-2 my-lg-0">-->
+                    <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+                    <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+                    <!--</form>-->
+                </div>
+            </nav>
+            <h1 class="pt-5 header-slideLeft">William Tran</h1>
+            <p class="lead">DEDICATED, FOCUSED, and DRIVEN</p>
+            <p class="">Here to solve problems and turn ideas into reality. Let's get ready to Django!</p>
+            <div id="joystick" class="d-inline-block">
+                <div id="mover" data-toggle="popover" data-content="Hello, welcome to my site. Please take a look around
+                then possibly hire me. PS I am a movable object on your screen. WHAT?!">
+                    <img src="{% static 'work/images/profile.jpg' %}" height="300">
+                </div>
+            </div>
+            <p class="pb-5 mt-2">
+                <a href="mailto:wtran4hire@gmail.com" class="btn btn-danger my-2">EMAIL ME</a>
+            </p>
         </div>
-    </nav>
+
+    </section>
 </header>
 
 <main role="main">
 
-    <section class="jumbotron jumbotron-fluid text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">William Tran</h1>
-            <p class="lead text-muted">DEDICATED, FOCUSED, and DRIVEN</p>
-            <p>Here to solve problems and turn ideas into reality. Let's get ready to Django!</p>
-            <img src="{% static 'work/images/profile.jpg' %}" height="300">
-            <p>
-                <a href="mailto:wtran4hire@gmail.com" class="btn btn-danger my-2">EMAIL ME</a>
-            </p>
-        </div>
-    </section>
     <section id="about">
         <div class="container py-4">
             <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -81,7 +88,7 @@
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up">
                     <i class="fas fa-code fa-lg fa-5x py-4"></i>
                     <h5>Software Development</h5>
-                    <p>Currently I'm focused on Python/Django programming but can build in Java/Spring Boot and MEAN stack as well.
+                    <p class="text-justify">I'm focused on Python/Django programming but can build in Java/Spring Boot and MEAN stack as well.
                         I enjoy the logical and creative ways to solve problems in building apps. I follow Object Oriented Programming
                         methods, and handling logic through MTV and MVC.
                     </p>
@@ -89,7 +96,7 @@
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="1000">
                     <i class="fas fa-dollar-sign fa-lg fa-5x py-4"></i>
                     <h5>Finance and Accounting</h5>
-                    <p>I have 10+ years combined of Financial Analysis and Accounting experience. I've worked in various
+                    <p class="text-justify">I have 10+ years combined of Financial Analysis and Accounting experience. I've worked in various
                         industries, including Real Estate, Food and Beverage, and Banking. My experiences
                         has helped me incorporate my analytical skills, attention to detail and collaborate with
                         others in a professional setting.
@@ -98,16 +105,15 @@
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="2000">
                     <i class="fas fa-suitcase fa-lg fa-5x py-4"></i>
                     <h5>Professional Goals</h5>
-                    <p>My goal is to build purposeful and fun apps that provide value. I seek to incorporate Data Science
+                    <p class="text-justify">My goal is to build purposeful and fun apps that provide value. I seek to incorporate Data Science
                         in the near future to create apps for data analytics and improve process for various industries. Currently,
-                        I'm exploring the capabilities of Machine Learning and Artificial Intelligence.
+                        I'm exploring the capabilities of Machine Learning and AI.
                     </p>
                 </div>
                 <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="3000">
                     <i class="fas fa-user fa-lg fa-5x py-4"></i>
                     <h5>Personal Goals</h5>
-                    <p>I hope to make a positive impact in peoples' lives through software development. I would like to
-                        be more present and build stronger relationships between family and friends. I continue to challenge myself and
+                    <p class="text-justify">I hope to make a positive impact in peoples' lives through software development. I continue to challenge myself and
                         dedicate to improving my craft. I always look for an opportunity to grow and hope to wake up one day feeling fulfilled.
                     </p>
                 </div>
@@ -320,11 +326,11 @@
     </div>
 </section>
 
-<footer class="page-footer font-small text-muted bg-dark pt-2">
-    <div class="container py-1">
-        <p class="float-right">
+<footer class="page-footer font-small text-muted py-1">
+    <div class="container pt-2">
+        <div class="float-right">
             <a href="#">Back to top</a>
-        </p>
+        </div>
         <p>William Tran &copy; {% now "Y" %} Copyright</p>
     </div>
 </footer>
@@ -343,49 +349,58 @@ crossorigin="anonymous"></script>
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
 crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Typist/1.2/typist.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
 <script type="text/javascript">
-    $(document).ready(function(){
-      // Add scrollspy to <body>
-      $('body').scrollspy({target: ".navbar", offset: 50});
 
-      // Add smooth scrolling on all links inside the navbar
-      $("#navbarSupportedContent a").on('click', function(event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
+$(document).ready(function() {
+    $('#mover').draggable();
+    $('[data-toggle="popover"]').popover();
+});
 
-          // Store hash
-          var hash = this.hash;
 
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 1000, function(){
+/* For animated scroll spy */
+$(document).ready(function(){
+  // Add scrollspy to <body>
+  $('body').scrollspy({target: ".navbar", offset: 50});
 
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        }  // End if
+  // Add smooth scrolling on all links inside the navbar
+  $("#navbarSupportedContent a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 1000, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
       });
-    });
-    $(function() {
-        $(window).scroll(function() {
-            $('.animation-test').each(function() {
-                var imagePos = $(this).offset().top;
-                var imageHeight = $(this).height();
-                var topOfWindow = $(window).scrollTop();
+    }  // End if
+  });
+});
+$(function() {
+    $(window).scroll(function() {
+        $('.animation-test').each(function() {
+            var imagePos = $(this).offset().top;
+            var imageHeight = $(this).height();
+            var topOfWindow = $(window).scrollTop();
 
-                if (imagePos < topOfWindow + imageHeight && imagePos + imageHeight > topOfWindow) {
-                    $(this).addClass("slideRight");
-                } else {
-                    $(this).removeClass("slideRight");
-                }
-            });
+            if (imagePos < topOfWindow + imageHeight && imagePos + imageHeight > topOfWindow) {
+                $(this).addClass("slideRight");
+            } else {
+                $(this).removeClass("slideRight");
+            }
         });
     });
+});
 
 
 

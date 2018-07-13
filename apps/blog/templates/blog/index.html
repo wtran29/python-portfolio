@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="/">William Tran</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,12 +51,12 @@
     <section class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <h1 class="jumbotron-heading display-4">Welcome to Billy's Blog</h1>
-            <p class="lead text-muted">Ramble, Ramble, Ramble...</p>
+            <p class="header-text">A place to ramble about all things.</p>
         </div>
     </section>
 
     <div class="container px-5">
-        <h2 class="blog-title pt-4">Newest Posts</h2>
+        <h2 class="blog-title pt-4">Recent Posts</h2>
         <hr>
         {% for blog in blogs %}
         <p class="blog-date-main text-muted pt-4">{{ blog.date_only }}</p>
@@ -91,7 +91,7 @@
     </div>
 </section>
 
-<footer class="page-footer font-small text-muted bg-dark pt-2">
+<footer class="page-footer font-small text-muted pt-2">
     <div class="container py-1">
         <p class="float-right">
             <a href="#">Back to top</a>

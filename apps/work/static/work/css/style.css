@@ -1,7 +1,22 @@
+#mover {
+    position: relative;
+    width: 200px;
+}
+
+.page-footer {
+    background: black;
+}
+
+.navbar-trans {
+    background: transparent;
+}
+
+
 /*Modal CSS section*/
 body {
     position: relative;
 }
+
 
 .modal-body h5 {
     margin: 1rem 0;
@@ -27,7 +42,7 @@ body {
     font-size: 0.8rem;
 }
 /* Jumbotron animation*/
-.jumbotron-heading {
+.header-slideLeft {
     position: relative;
     -webkit-animation-name: name;
     -webkit-animation-duration: 4s;
@@ -104,8 +119,40 @@ body {
         -webkit-transform: translateX(0%);
     }
 }
+/* Parallax Top */
+.parallax-main {
+  perspective: 1px;
+  transform-style: preserve-3d;
 
-/* Parallax */
+}
+
+.parallax-top {
+  background: url('../../work/images/nasa.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 1 0 auto;
+  position: relative;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+
+}
+
+.parallax-top h1, .parallax-top p {
+    color: white;
+    text-shadow: 0px 0px black;
+
+}
+
+.parallax-content {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Parallax Bottom*/
 .MainContainer {
   perspective: 1px;
   transform-style: preserve-3d;
@@ -125,11 +172,10 @@ body {
   transform: translateZ(-1px) scale(2);
   z-index: -1;
 }
-/*
+
 .ContentContainer {
   display: block;
   position: relative;
-  background-color: white;
+  /*background-color: white;*/
   z-index: 1;
 }
-*/
