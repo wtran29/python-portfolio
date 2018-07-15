@@ -1,3 +1,4 @@
+
 #mover {
     position: relative;
     width: 200px;
@@ -34,6 +35,8 @@ body {
     justify-content: unset!important;
     display: unset!important;
 }
+
+/* Tech */
 .tech-box {
     width: 19rem;
 }
@@ -41,6 +44,18 @@ body {
 .tech-box p {
     font-size: 0.8rem;
 }
+
+.tech-cat {
+    display: inline-block;
+    vertical-align: top;
+    margin: auto;
+    min-height: 16em;
+}
+
+.tech-item {
+    padding: 0 .5rem;
+}
+
 /* Jumbotron animation*/
 .header-slideLeft {
     position: relative;
@@ -178,4 +193,29 @@ body {
   position: relative;
   /*background-color: white;*/
   z-index: 1;
+}
+
+@media-only screen and (max-width: 375px) {
+    .tech-box {
+        width: unset;
+    }
+    .tech-box.row {
+        display: unset;
+    }
+}
+
+@media-only screen and (min-width: 376px) and (max-width: 425px) {
+    .tech-box {
+        width: unset!important;
+    }
+    .tech-box.row {
+        display: unset;
+    }
+}
+
+@media-only screen and (min-width: 426px) and (max-width: 768px) {
+    .tech-cat {
+        width: 100%;
+    }
+
 }
