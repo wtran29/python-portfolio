@@ -16,6 +16,8 @@
         <h1 class="blog-title">{{blog.title}}</h1>
         <p class="blog-date text-muted">{{blog.date_only}}</p>
         <img class="img-fluid" src="{{blog.image.url}}" height="450" width="450">
+        <iframe width="100%" height="315" src="{{ blog.video }}" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     <p class="my-5 mx-5 text-lg-left blog-body">{{blog.body}}</p>
 </div>
