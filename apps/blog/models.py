@@ -6,7 +6,8 @@ from django.db import models
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     pub_date = models.DateTimeField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank=True)
+    video = models.CharField(max_length=5000, blank=True)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
