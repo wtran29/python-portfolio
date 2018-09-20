@@ -61,8 +61,7 @@
         {% for blog in blogs %}
         <p class="blog-date-main text-muted pt-4">{{ blog.date_only }}</p>
         <h4><a class="blog-title-main" href="blog/{{ blog.id }}">{{ blog.title }}</a></h4>
-        <!--<img class="img-fluid blog-img" src="{{ blog.image.url }}" height=200 width=200>-->
-        <!--<br>-->
+        
         <p class="blog-summary pb-4">{{ blog.summary }}</p>
         <hr>
         {% endfor %}
