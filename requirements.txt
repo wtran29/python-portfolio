@@ -19,7 +19,7 @@ cloudpickle==0.5.3
 
 
 contextlib2==0.5.5
-cryptography==2.2.2
+cryptography==2.4.2
 cycler==0.10.0
 Cython==0.28.2
 
@@ -125,7 +125,7 @@ pytz==2018.4
 PyWavelets==0.5.2
 
 pywinpty==0.5.1
-PyYAML==3.12
+PyYAML==4.2b1
 pyzmq==17.0.0
 QtAwesome==0.4.4
 qtconsole==4.3.1
@@ -133,7 +133,7 @@ QtPy==1.4.1
 requests==2.18.4
 requests-file==1.4.3
 requests-ftp==0.3.1
-rope==0.10.7
+rope==0.11.0
 ruamel-yaml==0.15.35
 scikit-image==0.13.1
 scikit-learn==0.19.1
@@ -161,7 +161,7 @@ tornado==5.0.2
 traitlets==4.3.2
 typing==3.6.4
 unicodecsv==0.14.1
-urllib3==1.22
+urllib3==1.23
 wcwidth==0.1.7
 webencodings==0.5.1
 Werkzeug==0.14.1

@@ -14,7 +14,12 @@
 </head>
 <body>
 <header>
-<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="scroll-top-wrapper">
+        <span class="scroll-top-inner">
+            <i class="fa fa-2x fa-chevron-up"></i>
+        </span>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="/">William Tran</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,7 +34,7 @@
                     <a class="nav-link" href="http://github.com/wtran29">GitHub</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% static 'work/images/resume.pdf' %}">Resume</a>
+                    <a class="nav-link" href="{% static 'work/images/resume2018v2.pdf' %}">Resume</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/blog">Blog</a>
@@ -92,9 +97,9 @@
 
 <footer class="page-footer font-small text-muted pt-2">
     <div class="container py-1">
-        <p class="float-right">
-            <a href="#">Back to top</a>
-        </p>
+        <!--<p class="float-right">-->
+            <!--<a href="#">Back to top</a>-->
+        <!--</p>-->
         <p>William Tran &copy; {% now "Y" %} Copyright</p>
     </div>
 </footer>
@@ -102,9 +107,52 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
+<script type="text/javascript">
+$(function(){
+
+    $(document).on( 'scroll', function(){
+
+        if ($(window).scrollTop() > 100) {
+            $('.scroll-top-wrapper').addClass('show');
+        } else {
+            $('.scroll-top-wrapper').removeClass('show');
+        }
+    });
+});
+
+$(function(){
+
+$(document).on( 'scroll', function(){
+
+if ($(window).scrollTop() > 100) {
+$('.scroll-top-wrapper').addClass('show');
+} else {
+$('.scroll-top-wrapper').removeClass('show');
+}
+});
+
+$('.scroll-top-wrapper').on('click', scrollToTop);
+});
+
+function scrollToTop() {
+verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+element = $('body');
+offset = element.offset();
+offsetTop = offset.top;
+$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+}
+</script>
 </body>
 </html>
