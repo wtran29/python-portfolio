@@ -253,11 +253,11 @@ main {
     z-index: 99999999;
     background-color: #343a40;
     color: #eeeeee;
-    width: 3em;
-    height: 2.8em;
+    width: 50px;
+    height: 48px;
     line-height: 48px;
-    right: 2em;
-    bottom: 2em;
+    right: 30px;
+    bottom: 30px;
     padding-top: 2px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -290,7 +290,7 @@ main {
         display: unset;
     }
     .scroll-top-wrapper {
-        right: 4.5em!important;
+        right: 5em!important;
     }
 }
 
