@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 
@@ -20,3 +20,7 @@ class Blog(models.Model):
 
     def date_only(self):
         return self.pub_date.strftime('%e %b %Y')
+
+    def get_absolute_url(self):
+        return reverse("blogs:detail", kwargs={"blog_id": self.id})
+        # return "/blog/%s" % self.id

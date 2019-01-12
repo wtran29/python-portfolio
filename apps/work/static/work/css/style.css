@@ -289,9 +289,7 @@ main {
     .tech-box.row {
         display: unset;
     }
-    .scroll-top-wrapper {
-        right: 5em!important;
-    }
+
 }
 
 @media-only screen and (min-width: 376px) and (max-width: 425px) {
@@ -302,9 +300,6 @@ main {
         display: unset;
     }
 
-    .scroll-top-wrapper {
-        right: 3.5em!important;
-    }
 }
 
 @media-only screen and (min-width: 426px) and (max-width: 768px) {
@@ -312,9 +307,6 @@ main {
         width: 100%;
     }
 
-    .scroll-top-wrapper {
-        right: 3em;
-    }
 
 }
 

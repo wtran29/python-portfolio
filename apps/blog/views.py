@@ -15,3 +15,15 @@ def detail(request, blog_id):
         'blog': get_object_or_404(Blog, pk=blog_id)
     }
     return render(request, 'blog/blog.html', context)
+
+
+def create(request):
+    return HttpResponse("<h1>Create</h1>")
+
+
+def update(request):
+    return HttpResponse("<h1>Update</h1>")
+
+
+def delete(request):
+    return HttpResponse("<h1>Delete</h1>")
