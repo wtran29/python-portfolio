@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<main role="main">
+
+    <div class="container px-5">
+        <h2 class="blog-title pt-4">Recent Posts</h2>
+
+        <table class="table table-hover mt-4">
+            {% for blog in blogs %}
+            <tr class="caption">
+                <th>
+                    <h4 class="d-inline-block pt-2"><a class="blog-title-main" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h4>
+                    <small class="blog-date-main text-muted px-2">{{ blog.updated_at|timesince }} ago</small>
+                    <p class="blog-summary">{{ blog.summary }}</p>
+                    <p class="blog-summary pb-2">
+                        <a href="{{ blog.get_absolute_url }}" role="link">View</a> |
+                        <a href="{{ blog.get_absolute_url }}/edit" role="link">Edit</a>
+                    </p>
+                </th>
+            </tr>
+
+            {% endfor %}
+        </table>
+        <hr>
+
+        <div class="pagination">
+        <span class="step-links">
+            {% if blogs.has_previous %}
+                <a href="?{{page_variable}}=1">&laquo; first</a>
+                <a href="?{{page_variable}}={{ blogs.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}.
+            </span>
+
+            {% if blogs.has_next %}
+                <a href="?{{page_variable}}={{ blogs.next_page_number }}">next</a>
+                <a href="?{{page_variable}}={{ blogs.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+        </div>
+        <hr>
+    </div>
+
+
+</main>
+
+
+{% endblock content %}

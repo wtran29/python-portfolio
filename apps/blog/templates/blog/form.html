@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3 center">
+    <h1>Create Blog</h1>
+    {% load crispy_forms_tags %}
+    <form class="py-4" method="post" action="" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <!--{% for field in form %}-->
+            <!--{% if field.name == 'pub_date' %}-->
+            <!--<div class="date pull-right" id="pub_date">{{ field }}</div>-->
+            <!--{% else %}-->
+            <!--{{ field }}-->
+            <!--{% endif %}-->
+        <!--{% endfor %}-->
+        {{ form|crispy }}
+        <button class="btn btn-primary my-2" type="submit">Create</button>
+    </form>
+</div>
+<hr>
+{% endblock content %}
+
+
+

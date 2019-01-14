@@ -5,7 +5,7 @@ app_name = 'blogs'
 urlpatterns = [
     url(r'^blog$', views.allblogs, name='all'),
     url(r'^blog/(?P<blog_id>\d+)$', views.detail, name='detail'),
-    url(r'^blog/update$', views.update),
+    url(r'^blog/(?P<blog_id>\d+)/edit$', views.update, name='update'),
     url(r'^blog/create$', views.create),
-    url(r'^blog/delete$', views.delete)
+    url(r'^blog/(?P<blog_id>\d+)/delete$', views.delete)
 ]
