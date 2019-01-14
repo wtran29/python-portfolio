@@ -1,6 +1,6 @@
 from urllib.parse import quote_plus
 from django.core.paginator import Paginator
-from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, Http404
 from django.contrib import messages
 from .forms import BlogForm
 from .models import Blog
@@ -31,6 +31,8 @@ def detail(request, blog_id):
 
 
 def create(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     form = BlogForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -45,6 +47,8 @@ def create(request):
 
 
 def update(request, blog_id=None):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     instance = get_object_or_404(Blog, pk=blog_id)
     form = BlogForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
@@ -63,6 +67,8 @@ def update(request, blog_id=None):
 
 
 def delete(request, blog_id=None):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     instance = get_object_or_404(Blog, pk=blog_id)
     instance.delete()
     messages.success(request, "Successfully deleted.")

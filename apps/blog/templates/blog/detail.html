@@ -1,6 +1,9 @@
 {% extends "blog/base.html" %}
+{% load urlify %}
 
-{% block title %}{{blog.title}} | {{ block.super }}{% endblock title %}
+{% block title %}
+{{blog.title}} | {{ block.super }}
+{% endblock title %}
 
 {% block content %}
 <div class="mt-5 text-center col-12">
@@ -24,13 +27,13 @@
         Facebook
     </a>
 
-    <a href="https://twitter.com/home?status={{ share_quote }}%20{{ request.build_absolute_uri }}">
+    <a href="https://twitter.com/home?status={{ blog.body|truncatechars:50|urlify }}%20{{ request.build_absolute_uri }}">
     Twitter
     </a>
 
     <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>Google+</a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{blog.title}}&summary={{ share_quote }}&source=http:{{ request.build_absolute_uri }}">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{blog.title}}&summary={{ blog.body|truncatechars:50|urlify }}&source=http:{{ request.build_absolute_uri }}">
     Linkedin
     </a>
 
