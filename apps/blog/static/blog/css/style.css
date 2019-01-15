@@ -67,9 +67,14 @@
     letter-spacing: -0.2rem;
 }
 
+.blog-author {
+    font-family: 'Source Sans ExtraLight', sans-serif;
+    font-size: 1em;
+}
+
 .blog-date {
     font-family: 'Source Sans ExtraLight', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.35em;
     font-weight: bold;
 }
 .blog-body {

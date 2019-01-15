@@ -1,9 +1,11 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 # Create your models here.
 
 
 class Blog(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     pub_date = models.DateTimeField(blank=True, null=True)
     image = models.ImageField(upload_to='images/', blank=True,

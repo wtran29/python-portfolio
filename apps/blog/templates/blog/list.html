@@ -12,10 +12,15 @@
                 <th>
                     <h4 class="d-inline-block pt-2"><a class="blog-title-main" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h4>
                     <small class="blog-date-main text-muted px-2">{{ blog.updated_at|timesince }} ago</small>
+                    {% if blog.user.get_full_name %}
+                    <p class="blog-author">Written by: {{blog.user.get_full_name}}</p>
+                    {% else %}
+                    <p class="blog-author">Written by: {{blog.user}}</p>
+                    {% endif %}
                     <p class="blog-summary">{{ blog.summary }}</p>
                     <p class="blog-summary pb-2">
-                        <a href="{{ blog.get_absolute_url }}" role="link">View</a> |
-                        <a href="{{ blog.get_absolute_url }}/edit" role="link">Edit</a>
+                        <a href="{{ blog.get_absolute_url }}" role="link">View</a> {% if user.is_staff %} |
+                        <a href="{{ blog.get_absolute_url }}/edit" role="link">Edit</a> {% endif %}
                     </p>
                 </th>
             </tr>
