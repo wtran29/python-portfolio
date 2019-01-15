@@ -63,7 +63,7 @@
 
 .blog-title {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 4em;
+
     letter-spacing: -0.2rem;
 }
 
@@ -74,12 +74,12 @@
 
 .blog-date {
     font-family: 'Source Sans ExtraLight', sans-serif;
-    font-size: 1.35em;
+    font-size: 1.25em;
     font-weight: bold;
 }
-.blog-body {
+.blog-body p{
     font-family: 'Freight Text Light', sans-serif;
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 .btn-sm {

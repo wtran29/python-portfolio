@@ -1,5 +1,7 @@
 from urllib.parse import quote_plus
+from django.utils import timezone
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, Http404
 from django.contrib import messages
 from .forms import BlogForm
@@ -8,19 +10,36 @@ from .models import Blog
 
 
 def allblogs(request):
-    blogs_list = Blog.objects.order_by('-updated_at').all()
-    paginator = Paginator(blogs_list, 10)  # Show 25 contacts per page
+    today = timezone.now().date()
+    blogs_list = Blog.objects.active().order_by('-pub_date')
+    if request.user.is_staff or request.user.is_superuser:
+        blogs_list = Blog.objects.all().order_by('-pub_date')
+
+    query = request.GET.get('q')
+    if query:
+        blogs_list = blogs_list.filter(
+            Q(title__icontains=query) |
+            Q(body__icontains=query) |
+            Q(user__first_name__icontains=query) |
+            Q(user__last_name__icontains=query)
+        ).distinct()
+    paginator = Paginator(blogs_list, 2)  # Show 25 contacts per page
     page_variable = "page"
     page = request.GET.get(page_variable)
     blogs = paginator.get_page(page)
     context = {
-        'blogs': blogs
+        'blogs': blogs,
+        'today': today,
+        'page_variable': page_variable
     }
     return render(request, "blog/list.html", context)
 
 
 def detail(request, blog_id):
     blog = get_object_or_404(Blog, pk=blog_id)
+    if blog.draft or blog.pub_date > timezone.now().date():
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     share_quote = quote_plus(blog.body)
     context = {
         'blog': blog,
@@ -34,7 +53,7 @@ def create(request):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
 
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         raise Http404
 
     form = BlogForm(request.POST or None, request.FILES or None)

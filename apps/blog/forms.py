@@ -9,11 +9,12 @@ class BlogForm(forms.ModelForm):
         model = Blog
 
         fields = [
-            "pub_date",
             "title",
             "image",
             "video",
             "body",
+            "draft",
+            "pub_date",
         ]
         labels = {
             'pub_date': _('Publish Date'),

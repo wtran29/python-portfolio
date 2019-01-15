@@ -4,14 +4,28 @@
 <main role="main">
 
     <div class="container px-5">
-        <h2 class="blog-title pt-4">Recent Posts</h2>
+        <h1 class="blog-title pt-4">Recent Posts</h1>
+        <!--<div class="row input-group">-->
 
+            <!--<div class="col-lg-6">-->
+
+                <form class="input-group" method="GET" action="">
+                    <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Search for..."/>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+
+
+            <!--</div>-->
+        <!--</div>-->
         <table class="table table-hover mt-4">
             {% for blog in blogs %}
             <tr class="caption">
                 <th>
+                    {% if blog.draft %}<span style="color:red;">Draft</span>{% endif %} {% if blog.pub_date > today %}<span style="color:green;">Future Post</span>{% endif %}
                     <h4 class="d-inline-block pt-2"><a class="blog-title-main" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h4>
-                    <small class="blog-date-main text-muted px-2">{{ blog.updated_at|timesince }} ago</small>
+                    <small class="blog-date-main text-muted px-2">{{ blog.pub_date }}</small>
                     {% if blog.user.get_full_name %}
                     <p class="blog-author">Written by: {{blog.user.get_full_name}}</p>
                     {% else %}
@@ -33,8 +47,8 @@
         <div class="pagination">
         <span class="step-links">
             {% if blogs.has_previous %}
-                <a href="?{{page_variable}}=1">&laquo; first</a>
-                <a href="?{{page_variable}}={{ blogs.previous_page_number }}">previous</a>
+                <a href="?{{page_variable}}=1{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">&laquo; first</a>
+                <a href="?{{page_variable}}={{ blogs.previous_page_number }}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">previous</a>
             {% endif %}
 
             <span class="current">
@@ -42,8 +56,8 @@
             </span>
 
             {% if blogs.has_next %}
-                <a href="?{{page_variable}}={{ blogs.next_page_number }}">next</a>
-                <a href="?{{page_variable}}={{ blogs.paginator.num_pages }}">last &raquo;</a>
+                <a href="?{{page_variable}}={{ blogs.next_page_number }}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">next</a>
+                <a href="?{{page_variable}}={{ blogs.paginator.num_pages }}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">last &raquo;</a>
             {% endif %}
         </span>
         </div>

@@ -6,17 +6,17 @@
 {% endblock title %}
 
 {% block content %}
-<div class="mt-5 mb-3 text-center col-12">
+<div class="pt-5 mb-3 text-center col-12">
     <h1 class="blog-title">{{blog.title}}</h1>
     {% if blog.user.get_full_name %}
     <h4 class="d-inline-block blog-date font-weight-bold">{{blog.user.get_full_name}}<span class="pl-2">=></span></h4>
     {% else %}
     <h4 class="d-inline-block blog-date font-weight-bold">{{blog.user}}<span class="pl-2">=></span></h4>
     {% endif %}
-    <p class="blog-date text-muted d-inline-block pl-2">{% if blog.updated_at %}<span>{ </span>{{blog.updated_at}}<span> }</span>{% else %}No date available{% endif %}</p>
+    <p class="blog-date text-muted d-inline-block pl-2">{% if blog.draft %}<span style='color:red;'>Draft </span>{% endif %}<span>{ </span>{{blog.pub_date}}<span> }</span></p>
 
     <div class="d-block">
-        # https://developers.facebook.com/docs/plugins/like-button
+        <!--https://developers.facebook.com/docs/plugins/like-button-->
         <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 
         <a class="btn btn-sm twitter" href="https://twitter.com/home?status={{ blog.body|truncatechars:50|urlify }}%20{{ request.build_absolute_uri }}"><i class="fab fa-twitter"></i>
@@ -35,7 +35,7 @@
 </div>
 <hr>
 
-<div class="container mb-4 px-4">
+<div class="container py-4 px-4">
     <div class="text-center">
         {% if blog.image %}
         <img class="img-fluid img-responsive" src="{{ blog.image.url }}" height="450" width="450">
@@ -45,14 +45,13 @@
                 allow="autoplay; encrypted-media" allowfullscreen></iframe>
         {% endif %}
     </div>
-    <p class="text-lg-left blog-body text-justify">{{blog.body|linebreaks}}</p>
-    <br>
+    <div class="blog-body text-lg-left text-justify py-4"><p>{{blog.body|linebreaks|safe}}</p></div>
 </div>
 <hr>
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
 
-        # https://developers.facebook.com/docs/plugins/comments
+        <!--https://developers.facebook.com/docs/plugins/comments-->
         <div class="fb-comments container text-center" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
     </div>
 </div>
