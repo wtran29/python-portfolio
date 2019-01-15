@@ -17,6 +17,7 @@
                     {% else %}
                     <p class="blog-author">Written by: {{blog.user}}</p>
                     {% endif %}
+
                     <p class="blog-summary">{{ blog.summary }}</p>
                     <p class="blog-summary pb-2">
                         <a href="{{ blog.get_absolute_url }}" role="link">View</a> {% if user.is_staff %} |
