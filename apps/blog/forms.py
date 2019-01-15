@@ -1,9 +1,12 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Blog
+from pagedown.widgets import PagedownWidget
 
 
 class BlogForm(forms.ModelForm):
+    body = forms.CharField(widget=PagedownWidget)
+    pub_date = forms.DateTimeField(widget=forms.SelectDateWidget)
 
     class Meta:
         model = Blog

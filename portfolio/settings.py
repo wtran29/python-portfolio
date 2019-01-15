@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    # 'datetimepicker',
+    'pagedown',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portfolio/static')
+    os.path.join(BASE_DIR, 'portfolio\static')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
