@@ -1,10 +1,12 @@
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 
 from markdown_deux import markdown
+from apps.comments.models import Comment
 # Create your models here.
 
 
@@ -45,3 +47,16 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return reverse("blogs:detail", kwargs={"blog_id": self.id})
         # return "/blog/%s" % self.id
+
+    @property
+    def comments(self):
+        instance = self
+        qs = Comment.objects.filter_by_instance(instance)
+        return qs
+
+    @property
+    def get_content_type(self):
+        instance = self
+        content_type = ContentType.objects.get_for_model(instance.__class__)
+        return content_type
+

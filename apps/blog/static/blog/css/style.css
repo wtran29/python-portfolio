@@ -45,6 +45,11 @@
     min-width: 0!important;
 }
 
+.blockquote {
+    padding: .5rem 1rem;
+    border-left: .25rem solid #eceeef;
+}
+
 .blog-title-main {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.4em;
