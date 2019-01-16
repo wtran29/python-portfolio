@@ -6,8 +6,8 @@ from pagedown.widgets import PagedownWidget
 
 
 class BlogForm(forms.ModelForm):
-    body = forms.CharField(widget=PagedownWidget(show_preview=False))
-    pub_date = forms.DateField(widget=forms.SelectDateWidget)
+    body = forms.CharField(widget=PagedownWidget(show_preview=False), label='Content')
+    pub_date = forms.DateField(widget=forms.SelectDateWidget, label='Publish Date')
 
     class Meta:
         model = Blog
@@ -21,28 +21,23 @@ class BlogForm(forms.ModelForm):
             "pub_date",
         ]
         labels = {
-            'pub_date': _('Publish Date'),
+            'pub_date': 'Publish Date',
             'title': 'Blog Title',
             'video': 'Video Link',
-            'body': _('Content'),
+            'body': 'Content',
         }
 
         widgets = {
-        #     "pub_date": forms.DateInput(
-        #         attrs={'class': 'date form-control mb-2', 'id': 'pub_date'}
-        #     ),
-        #     "title": forms.TextInput(
-        #         attrs={'class': 'form-control mb-2'}
-        #     ),
             "image": forms.ClearableFileInput(
                 attrs={'class': "form-control mb-2 round"}
             ),
-        #     "video": forms.TextInput(
-        #         attrs={'class': 'form-control mb-2'}
-        #     ),
-        #     "body": forms.Textarea(
-        #         attrs={'class': 'form-control mb-2'}
-        #     ),
+            # "body": forms.CharField(
+            #     widget=PagedownWidget(
+            #         show_preview=False),
+            # ),
+            # "pub_date": forms.DateField(
+            #     widget=forms.SelectDateWidget
+            # ),
         }
 
     # helper = FormHelper()

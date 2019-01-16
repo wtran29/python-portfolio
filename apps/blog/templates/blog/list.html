@@ -4,21 +4,17 @@
 <main role="main">
 
     <div class="container px-5">
-        <h1 class="blog-title pt-4">Recent Posts</h1>
-        <!--<div class="row input-group">-->
+        <h1 class="blog-title pt-4 d-inline-block mr-2">Recent Posts</h1>
+        <a class="btn btn-success mb-3" href="blog/create" role="button"><i class="fas fa-plus"></i> Create</a>
+        <div class="col-sm-6 row">
+            <form class="input-group" method="GET" action="">
+                <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Search for..."/>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
 
-            <div class="col-sm-6 row">
-
-                <form class="input-group" method="GET" action="">
-                    <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Search for..."/>
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
-
-
-            </div>
-        <!--</div>-->
         <table class="table table-hover mt-4">
             {% for blog in blogs %}
             <tr class="caption blog-detail-item">
@@ -35,7 +31,8 @@
                     <p class="blog-summary">{{ blog.get_html|truncatechars_html:200 }}</p>
                     <p class="blog-summary pb-2">
                         <a href="{{ blog.get_absolute_url }}" role="link">View</a> {% if user.is_staff %} |
-                        <a href="{{ blog.get_absolute_url }}/edit" role="link">Edit</a> {% endif %}
+                        <a href="{{ blog.get_absolute_url }}/edit" role="link">Edit</a> |
+                        <a href="{{ blog.get_absolute_url }}/delete" role="link">Delete</a>{% endif %}
                     </p>
                 </th>
             </tr>

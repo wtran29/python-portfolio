@@ -11,9 +11,15 @@
         <h1>Preview</h1>
         <div class="content-preview">
             <h3 id="preview-title"></h3>
+            {% if instance.image %}
+            <img class="img-responsive" src="{{ instance.image.url }}" width="100%"/>
+            {% endif %}
             <img class="img-responsive" id="preview-image" src="" width="100%"/>
+            <br>
+            {% if instance.video %}
             <iframe class="img-responsive" id="preview-video" width="100%" height="350" src="" frameborder="0"
                 allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            {% endif %}
             <p id="preview-content"></p>
         </div>
     </div>
@@ -22,16 +28,14 @@
 
         <form class="py-4" method="post" action="" enctype='multipart/form-data'>
             {% csrf_token %}
-            <!--{% for field in form %}-->
-            <!--{% if field.name == 'pub_date' %}-->
-            <!--<div class="date pull-right" id="pub_date">{{ field }}</div>-->
-            <!--{% else %}-->
-            <!--{{ field }}-->
-            <!--{% endif %}-->
-            <!--{% endfor %}-->
+
             {{ form|crispy }}
-            <button class="btn btn-primary my-2" type="submit">Create</button>
+            <button class="btn btn-secondary my-2" type="submit">{% if instance %}Update{% else %}Create{% endif %}</button>
+            {% if instance %}
+            <a href="{{ instance.get_absolute_url }}/delete" class="btn btn-danger" role="button">Delete</a>
+            {% endif %}
         </form>
+
     </div>
 
 </div>

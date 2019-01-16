@@ -154,7 +154,7 @@ $(document).ready(function(){
     })
 
     $(".blog-detail-item img").each(function(){
-        $(this).addClass("img-responsive")
+        $(this).addClass("img-responsive").attr('width', '100%')
     })
 
 
@@ -164,7 +164,7 @@ $(document).ready(function(){
         var markedContent = marked(value)
         $("#preview-content").html(markedContent)
         $("#preview-content img").each(function(){
-            $(this).addClass("img-responsive")
+            $(this).addClass("img-responsive").attr('width', '100%')
         })
     }
     setContent(contentInput.val())

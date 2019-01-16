@@ -31,14 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # LOCAL APPS
     'apps.blog',
     'apps.work',
+    'apps.comments',
+    # DJANGO APPS
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # THIRD PARTY APPS
     'crispy_forms',
     'pagedown',
     'markdown_deux',
