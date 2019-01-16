@@ -45,7 +45,7 @@
                 allow="autoplay; encrypted-media" allowfullscreen></iframe>
         {% endif %}
     </div>
-    <div class="blog-body text-lg-left text-justify py-4 content-markdown"><p>{{blog.body|safe}}</p></div>
+    <div class="blog-body text-lg-left text-justify py-4 blog-detail-item"><p>{{blog.get_html}}</p></div>
 </div>
 <hr>
 <div class="row">

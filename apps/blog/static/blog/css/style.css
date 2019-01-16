@@ -38,6 +38,13 @@
     color: gainsboro;
 }
 
+.wmd-panel {
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    width: unset!important;
+    min-width: 0!important;
+}
+
 .blog-title-main {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.4em;

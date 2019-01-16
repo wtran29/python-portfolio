@@ -7,7 +7,7 @@
         <h1 class="blog-title pt-4">Recent Posts</h1>
         <!--<div class="row input-group">-->
 
-            <!--<div class="col-lg-6">-->
+            <div class="col-sm-6 row">
 
                 <form class="input-group" method="GET" action="">
                     <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Search for..."/>
@@ -17,11 +17,11 @@
                 </form>
 
 
-            <!--</div>-->
+            </div>
         <!--</div>-->
         <table class="table table-hover mt-4">
             {% for blog in blogs %}
-            <tr class="caption">
+            <tr class="caption blog-detail-item">
                 <th>
                     {% if blog.draft %}<span class="d-block" style="color:red;">Draft</span>{% endif %} {% if blog.pub_date > today %}<span class="d-block" style="color:green;">Future Post</span>{% endif %}
                     <h4 class="d-inline-block pt-2"><a class="blog-title-main" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h4>
@@ -32,7 +32,7 @@
                     <p class="blog-author">Written by: {{blog.user}}</p>
                     {% endif %}
 
-                    <p class="blog-summary content-markdown">{{ blog.summary|safe }}</p>
+                    <p class="blog-summary">{{ blog.get_html|truncatechars_html:200 }}</p>
                     <p class="blog-summary pb-2">
                         <a href="{{ blog.get_absolute_url }}" role="link">View</a> {% if user.is_staff %} |
                         <a href="{{ blog.get_absolute_url }}/edit" role="link">Edit</a> {% endif %}

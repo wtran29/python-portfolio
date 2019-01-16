@@ -1,25 +1,39 @@
 {% extends "blog/base.html" %}
-
+{% load crispy_forms_tags %}
 {% block head_extra %}
 {{ form.media }}
 {% endblock head_extra %}
 
 {% block content %}
-<div class="container col-sm-6 col-sm-offset-3">
-    <h1>Create Blog</h1>
-    {% load crispy_forms_tags %}
-    <form class="py-4" method="post" action="" enctype='multipart/form-data'>
-        {% csrf_token %}
-        <!--{% for field in form %}-->
+<div class="row">
+
+    <div class="col-sm-6">
+        <h1>Preview</h1>
+        <div class="content-preview">
+            <h3 id="preview-title"></h3>
+            <img class="img-responsive" id="preview-image" src="" width="100%"/>
+            <iframe class="img-responsive" id="preview-video" width="100%" height="350" src="" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <p id="preview-content"></p>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h1>Create Blog</h1>
+
+        <form class="py-4" method="post" action="" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <!--{% for field in form %}-->
             <!--{% if field.name == 'pub_date' %}-->
             <!--<div class="date pull-right" id="pub_date">{{ field }}</div>-->
             <!--{% else %}-->
             <!--{{ field }}-->
             <!--{% endif %}-->
-        <!--{% endfor %}-->
-        {{ form|crispy }}
-        <button class="btn btn-primary my-2" type="submit">Create</button>
-    </form>
+            <!--{% endfor %}-->
+            {{ form|crispy }}
+            <button class="btn btn-primary my-2" type="submit">Create</button>
+        </form>
+    </div>
+
 </div>
 <hr>
 {% endblock content %}

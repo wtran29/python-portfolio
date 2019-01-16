@@ -139,27 +139,93 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.0/marked.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
 <script type="text/javascript">
 <!--Markdown function-->
 <!--Show markdowns correctly-->
+<!--Show markdown images correctly-->
 $(document).ready(function(){
     $(".content-markdown").each(function(){
         var content = $(this).text()
-        console.log(content)
         var markedContent = marked(content)
-        console.log(markedContent)
         $(this).html(markedContent)
     })
-})
-<!--Show markdown images correctly-->
-$(document).ready(function(){
-    $(".content-markdown img").each(function(){
+
+    $(".blog-detail-item img").each(function(){
         $(this).addClass("img-responsive")
     })
+
+
+    var contentInput = $("#id_body");
+
+    function setContent(value){
+        var markedContent = marked(value)
+        $("#preview-content").html(markedContent)
+        $("#preview-content img").each(function(){
+            $(this).addClass("img-responsive")
+        })
+    }
+    setContent(contentInput.val())
+
+    contentInput.keyup(function(){
+        var newContent = $(this).val()
+        setContent(newContent)
+    })
+
+    var titleInput = $("#id_title");
+
+    function setTitle(value){
+        if (value) {
+            $("#preview-title").text(value);
+        }
+    }
+    setTitle(titleInput.val())
+
+    titleInput.keyup(function(){
+        var newContent = $(this).val()
+        setTitle(newContent)
+    })
+
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#preview-image').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#id_image").change(function() {
+      readURL(this);
+    });
+
+    var videoInput = $("#id_video");
+
+    function setVideo(value){
+        if(value){
+            $("#preview-video").attr('src', value);
+        }
+    }
+    setVideo(videoInput.val())
+
+    videoInput.keyup(function(){
+        var newContent = $(this).val()
+        setVideo(newContent)
+    })
+
+
+    // preview-title
+    // preview-content
 })
+
+
+
 
 <!--Scroll top function-->
 $(function(){

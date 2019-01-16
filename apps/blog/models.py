@@ -2,6 +2,9 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.safestring import mark_safe
+
+from markdown_deux import markdown
 # Create your models here.
 
 
@@ -31,8 +34,10 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
-    def summary(self):
-        return self.body[:200]+'...'
+    def get_html(self):
+        content = self.body
+        markdown_text = markdown(content)
+        return mark_safe(markdown_text)
 
     # def date_only(self):
     #     return self.pub_date.strftime('%e %b %Y')
