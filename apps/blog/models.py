@@ -66,12 +66,12 @@ class Blog(models.Model):
         return content_type
 
 
-def pre_save_post_receiver(sender, blog, *args, **kwargs):
+def pre_save_post_receiver(sender, instance, *args, **kwargs):
 
-    if blog.body:
-        html_string = blog.get_html()
+    if instance.body:
+        html_string = instance.get_html()
         read_time_var = get_read_time(html_string)
-        blog.read_time = read_time_var
+        instance.read_time = read_time_var
 
 
 pre_save.connect(pre_save_post_receiver, sender=Blog)

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # LOCAL APPS
+    'apps.accounts',
     'apps.blog',
     'apps.work',
     'apps.comments',
