@@ -40,7 +40,10 @@ class Comment(models.Model):
         return str(self.user.username)
 
     def get_absolute_url(self):
-        return reverse("comments:thread", kwargs={'thread_id': self.id})
+        return reverse("comments:thread", kwargs={'comment_id': self.id})
+
+    def get_delete_url(self):
+        return reverse("comments:delete", kwargs={"comment_id": self.id})
 
     def children(self):  # Replies to comments
         return Comment.objects.filter(parent=self).order_by("created_at")

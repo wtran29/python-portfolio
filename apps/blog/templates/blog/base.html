@@ -157,10 +157,11 @@ $(document).ready(function(){
         $(this).addClass("img-responsive").attr('width', '100%')
     })
 
-/*
+
     var contentInput = $("#id_body");
 
     function setContent(value){
+        console.log(value)
         var markedContent = marked(value)
         $("#preview-content").html(markedContent)
         $("#preview-content img").each(function(){
@@ -173,7 +174,7 @@ $(document).ready(function(){
         var newContent = $(this).val()
         setContent(newContent)
     })
-*/
+
     var titleInput = $("#id_title");
 
     function setTitle(value){
@@ -219,6 +220,11 @@ $(document).ready(function(){
         setVideo(newContent)
     })
 
+    // preview-title
+    // preview-content
+})
+
+$(document).ready(function(){
     $(".comment-show-btn").click(function(event){
         event.preventDefault();
         $(this).parent().parent().parent().next(".comment-reply").fadeToggle();
@@ -228,12 +234,7 @@ $(document).ready(function(){
         event.preventDefault();
         $(this).parent().parent().parent().next(".comment-reply").fadeToggle();
     })
-
-    // preview-title
-    // preview-content
 })
-
-
 
 
 <!--Scroll top function-->

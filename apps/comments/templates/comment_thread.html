@@ -14,7 +14,7 @@
         <p class="mb-0 py-2">{{ comment.content }}</p>
         <small><footer class="blockquote-footer font-italic pb-2">via {{ comment.user }} | {{ comment.updated_at|timesince }} ago |
             <span>{% if comment.children.count > 0 %}{{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %}</span>
-            {% endif %}</footer></small>
+            {% endif %} {% if request.user == comment.user %}| <a href="{{ comment.get_delete_url }}">Delete</a>{% endif %}</footer></small>
 
 
         <div>
@@ -22,7 +22,8 @@
             <blockquote class="blockquote pl-3 m-1 py-1">
                 <p class="mb-0 py-2">{{ child_comment.content }}</p>
 
-                <small><footer class="blockquote-footer font-italic">via {{ child_comment.user }} | {{ child_comment.updated_at|timesince }} ago</footer></small>
+                <small><footer class="blockquote-footer font-italic">via {{ child_comment.user }} |
+                    {{ child_comment.updated_at|timesince }} ago {% if request.user == child_comment.user %}| <a href="{{ child_comment.get_delete_url }}">Delete</a>{% endif %}</footer></small>
             </blockquote>
             <hr>
             {% endfor %}

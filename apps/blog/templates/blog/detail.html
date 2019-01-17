@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% load urlify %}
 {% load crispy_forms_tags %}
-
+{% load humanize %}
 {% block title %}
 {{blog.title}} | {{ block.super }}
 {% endblock title %}
@@ -14,7 +14,9 @@
     {% else %}
     <h4 class="d-inline-block blog-date font-weight-bold">{{blog.user}}<span class="pl-2">=></span></h4>
     {% endif %}
-    <p class="blog-date text-muted d-inline-block pl-2">{% if blog.draft %}<span style='color:red;'>Draft </span>{% endif %}<span>{ </span>{{blog.pub_date}}<span> }</span></p>
+    <p class="blog-date text-muted d-inline-block pl-2 mb-0">{% if blog.draft %}<span style='color:red;'>Draft </span>{% endif %}<span>{ </span>{{blog.pub_date}}<span> }</span></p>
+    <p class="font-italic">Read time: {% if blog.read_time|time:"i" <= "01" %}<1 minute
+        {% else %}{{ blog.read_time|time:"i"|intcomma }} minutes {% endif %}</p>
 
     <div class="d-block">
         <!--https://developers.facebook.com/docs/plugins/like-button-->
@@ -43,7 +45,7 @@
         <img class="img-fluid img-responsive" src="{{ blog.image.url }}" height="450" width="450">
         {% endif %}
         {% if blog.video %}
-        <iframe width="100%" height="400" src="{{ blog.video }}" frameborder="0"
+        <iframe class="pt-4" width="100%" height="400" src="{{ blog.video }}" frameborder="0"
                 allow="autoplay; encrypted-media" allowfullscreen></iframe>
         {% endif %}
     </div>
