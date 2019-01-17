@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+{% load urlify %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{blog.title}} | {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<h1>Thread {{ comment.id }}</h1>
+<div class="col-sm-6 col-sm-offset-3">
+
+    <blockquote class="blockquote pl-5 mx-3">
+        <p class="mb-0 py-2">{{ comment.content }}</p>
+        <small><footer class="blockquote-footer font-italic pb-2">via {{ comment.user }} | {{ comment.updated_at|timesince }} ago |
+            <span>{% if comment.children.count > 0 %}{{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %}</span>
+            {% endif %}</footer></small>
+
+
+        <div>
+            {% for child_comment in comment.children %}
+            <blockquote class="blockquote pl-3 m-1 py-1">
+                <p class="mb-0 py-2">{{ child_comment.content }}</p>
+
+                <small><footer class="blockquote-footer font-italic">via {{ child_comment.user }} | {{ child_comment.updated_at|timesince }} ago</footer></small>
+            </blockquote>
+            <hr>
+            {% endfor %}
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-comment"></i> Comment</button>
+            </form>
+        </div>
+    </blockquote>
+</div>
+<hr>
+
+
+{% endblock content %}
+

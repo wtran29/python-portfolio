@@ -56,7 +56,6 @@ def detail(request, blog_id):
     }
     comment_form = CommentForm(request.POST or None, initial=initial_data)
     if comment_form.is_valid():
-        print(comment_form.cleaned_data)
         c_type = comment_form.cleaned_data.get("content_type")
         content_type = ContentType.objects.get(model=c_type)
         obj_id = comment_form.cleaned_data.get("object_id")
