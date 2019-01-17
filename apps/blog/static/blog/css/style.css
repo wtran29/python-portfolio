@@ -50,6 +50,10 @@
     border-left: .25rem solid #eceeef;
 }
 
+.comment-reply {
+    display: none;
+}
+
 .blog-title-main {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.4em;

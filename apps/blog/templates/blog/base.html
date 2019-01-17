@@ -157,7 +157,7 @@ $(document).ready(function(){
         $(this).addClass("img-responsive").attr('width', '100%')
     })
 
-
+/*
     var contentInput = $("#id_body");
 
     function setContent(value){
@@ -173,7 +173,7 @@ $(document).ready(function(){
         var newContent = $(this).val()
         setContent(newContent)
     })
-
+*/
     var titleInput = $("#id_title");
 
     function setTitle(value){
@@ -219,6 +219,15 @@ $(document).ready(function(){
         setVideo(newContent)
     })
 
+    $(".comment-show-btn").click(function(event){
+        event.preventDefault();
+        $(this).parent().parent().parent().next(".comment-reply").fadeToggle();
+    })
+
+    $(".comment-reply-btn").click(function(event){
+        event.preventDefault();
+        $(this).parent().parent().parent().next(".comment-reply").fadeToggle();
+    })
 
     // preview-title
     // preview-content
