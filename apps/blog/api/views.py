@@ -16,6 +16,8 @@ from rest_framework.permissions import (
 
 from apps.blog.models import Blog
 
+from .permissions import IsOwnerOrReadOnly
+
 from .serializers import (
     BlogDetailSerializer,
     BlogListSerializer,
@@ -26,7 +28,7 @@ from .serializers import (
 class BlogCreateAPIView(CreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogCreateUpdateSerializer
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -49,6 +51,7 @@ class BlogUpdateAPIView(RetrieveUpdateAPIView):
     serializer_class = BlogCreateUpdateSerializer
     lookup_field = "id"
     lookup_url_kwarg = "blog_id"
+    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
