@@ -1,3 +1,9 @@
+from django.db.models import Q
+
+from rest_framework.filters import (
+    SearchFilter,  # use ?search=, can chain with ?q= search
+    OrderingFilter  # shows ordering of search, descending/ascending
+)
 from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
@@ -35,8 +41,22 @@ class BlogCreateAPIView(CreateAPIView):
 
 
 class BlogListAPIView(ListAPIView):
-    queryset = Blog.objects.all()
     serializer_class = BlogListSerializer
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['title', 'body', 'user__first_name']
+
+    def get_queryset(self, *args, **kwargs):
+        # blogs_list = super(BlogListAPIView, self).get_queryset(*args, **kwargs)
+        blogs_list = Blog.objects.all()
+        query = self.request.GET.get('q')
+        if query:
+            blogs_list = blogs_list.filter(
+                Q(title__icontains=query) |
+                Q(body__icontains=query) |
+                Q(user__first_name__icontains=query) |
+                Q(user__last_name__icontains=query)
+            ).distinct()
+        return blogs_list
 
 
 class BlogDetailAPIView(RetrieveAPIView):
@@ -62,3 +82,4 @@ class BlogDeleteAPIView(DestroyAPIView):
     serializer_class = BlogDetailSerializer
     lookup_field = "id"
     lookup_url_kwarg = "blog_id"
+    permission_classes = [IsOwnerOrReadOnly]
