@@ -1,4 +1,5 @@
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth import get_user_model
 
 from rest_framework.serializers import (
     ModelSerializer,
@@ -8,6 +9,8 @@ from rest_framework.serializers import (
 )
 
 from apps.comments.models import Comment
+
+User = get_user_model()
 
 
 # Custom CommentCreateSerializer to handle validation for object id and parent
@@ -22,6 +25,7 @@ def create_comment_serializer(model_type='POST', object_id=None, parent_id=None)
                 'updated_at'
             ]
 
+        # Initializing class with the arguments passed
         def __init__(self, *args, **kwargs):
             self.model_type = model_type
             self.object_id = object_id
@@ -32,6 +36,7 @@ def create_comment_serializer(model_type='POST', object_id=None, parent_id=None)
                     self.parent_obj = parent_qs.first()
             return super(CommentCreateSerializer, self).__init__(*args, **kwargs)
 
+        # Check to validate content type and if object id is related to it
         def validate(self, data):
             model_type = self.model_type
             model_qs = ContentType.objects.filter(model=model_type)
@@ -44,6 +49,22 @@ def create_comment_serializer(model_type='POST', object_id=None, parent_id=None)
             if not obj_qs.exists() or obj_qs.count() != 1:
                 raise ValidationError("Not an object id for this content type")
             return data
+
+        def create(self, validated_data):
+            content = validated_data.get("content")
+            user = User.objects.all().first()
+            model_type = self.model_type
+            object_id = self.object_id
+            parent_obj = self.parent_obj
+            comment = Comment.objects.create_by_model_type(
+                model_type=model_type,
+                object_id=object_id,
+                content=content,
+                user=user,
+                parent_obj=parent_obj
+
+            )
+            return comment
 
     return CommentCreateSerializer
 
