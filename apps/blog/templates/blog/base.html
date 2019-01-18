@@ -73,28 +73,19 @@
 
 {% include "blog/messages.html" %}
 <div class="container px-5">
-
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'blogs:all' %}">Blogs</a></li>
+        {% block blog_detail_link %}
+        {% endblock %}
+        {% if not request.user.is_authenticated %}
+        <li class="breadcrumb-item ml-auto"><a href="{% url 'register' %}">Register</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'login' %}">Login</a></li>
+        {% else %}
+        <li class="breadcrumb-item ml-auto"><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
+    </ol>
     {% block content %}
-
-
-    <!--<main role="main">-->
-
-
-        <!--<div class="container px-5">-->
-            <!--<h2 class="blog-title pt-4">Recent Posts</h2>-->
-            <!--<hr>-->
-            <!--{% for blog in blogs %}-->
-            <!--<p class="blog-date-main text-muted pt-4">{{ blog.date_only }}</p>-->
-            <!--<h4><a class="blog-title-main" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h4>-->
-
-            <!--<p class="blog-summary pb-4">{{ blog.summary }}</p>-->
-            <!--<hr>-->
-            <!--{% endfor %}-->
-        <!--</div>-->
-
-    <!--</main>-->
-
-
     {% endblock content %}
 </div>
 <section id="connect">
@@ -159,7 +150,7 @@ $(document).ready(function(){
 
 
     var contentInput = $("#id_body");
-/*
+
     function setContent(value){
         console.log(value)
         var markedContent = marked(value)
@@ -174,7 +165,7 @@ $(document).ready(function(){
         var newContent = $(this).val()
         setContent(newContent)
     })
-*/
+
     var titleInput = $("#id_title");
 
     function setTitle(value){
