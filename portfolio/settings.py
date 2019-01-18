@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'pagedown',
     'markdown_deux',
+    'rest_framework',
 ]
 
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs

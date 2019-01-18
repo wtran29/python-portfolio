@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('apps.work.urls')),
     url(r'^blog/', include('apps.blog.urls', namespace="blogs")),
+    url(r'^api/blog/', include('apps.blog.api.urls', namespace="blogs-api")),
+
     url(r'^comment/', include('apps.comments.urls', namespace="comments")),
     url(r'^login/', login_view, name='login'),
     url(r'^register/', register_view, name='register'),
