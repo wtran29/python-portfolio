@@ -26,6 +26,7 @@ from apps.comments.models import Comment
 
 from .serializers import (
     CommentSerializer,
+    CommentDetailSerializer,
 )
 
 
@@ -59,9 +60,9 @@ class CommentListAPIView(ListAPIView):
 
 class CommentDetailAPIView(RetrieveAPIView):
     queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    # lookup_field = "id"
-    # lookup_url_kwarg = "blog_id"
+    serializer_class = CommentDetailSerializer
+    lookup_field = "id"
+    lookup_url_kwarg = "comment_id"
 
 
 # class BlogUpdateAPIView(RetrieveUpdateAPIView):
