@@ -12,13 +12,13 @@ from rest_framework.generics import (
     CreateAPIView,
     RetrieveUpdateAPIView,
 )
-
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
     IsAdminUser,
     IsAuthenticatedOrReadOnly,
 )
+from .pagination import BlogLimitOffsetPagination, BlogPageNumberPagination
 
 from apps.blog.models import Blog
 
@@ -44,6 +44,7 @@ class BlogListAPIView(ListAPIView):
     serializer_class = BlogListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['title', 'body', 'user__first_name']
+    pagination_class = BlogPageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
         # blogs_list = super(BlogListAPIView, self).get_queryset(*args, **kwargs)
