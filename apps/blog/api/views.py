@@ -2,10 +2,34 @@ from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
     UpdateAPIView,
-    DestroyAPIView
+    DestroyAPIView,
+    CreateAPIView,
+    RetrieveUpdateAPIView,
 )
+
+from rest_framework.permissions import (
+    AllowAny,
+    IsAuthenticated,
+    IsAdminUser,
+    IsAuthenticatedOrReadOnly,
+)
+
 from apps.blog.models import Blog
-from .serializers import BlogDetailSerializer, BlogListSerializer
+
+from .serializers import (
+    BlogDetailSerializer,
+    BlogListSerializer,
+    BlogCreateUpdateSerializer,
+)
+
+
+class BlogCreateAPIView(CreateAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogCreateUpdateSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class BlogListAPIView(ListAPIView):
@@ -20,11 +44,14 @@ class BlogDetailAPIView(RetrieveAPIView):
     lookup_url_kwarg = "blog_id"
 
 
-class BlogUpdateAPIView(UpdateAPIView):
+class BlogUpdateAPIView(RetrieveUpdateAPIView):
     queryset = Blog.objects.all()
-    serializer_class = BlogDetailSerializer
+    serializer_class = BlogCreateUpdateSerializer
     lookup_field = "id"
     lookup_url_kwarg = "blog_id"
+
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class BlogDeleteAPIView(DestroyAPIView):

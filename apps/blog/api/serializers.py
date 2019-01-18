@@ -8,6 +8,7 @@ class BlogListSerializer(ModelSerializer):
         model = Blog
         fields = [
             "id",
+            "user",
             "title",
             "body",
             "pub_date",
@@ -25,3 +26,11 @@ class BlogDetailSerializer(ModelSerializer):
         ]
 
 
+class BlogCreateUpdateSerializer(ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = [
+            "title",
+            "body",
+            "pub_date",
+        ]
