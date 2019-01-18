@@ -4,6 +4,8 @@ from rest_framework.serializers import (
     SerializerMethodField,
 )
 
+from apps.comments.api.serializers import CommentSerializer
+from apps.comments.models import Comment
 from apps.blog.models import Blog
 
 
@@ -37,6 +39,7 @@ class BlogDetailSerializer(ModelSerializer):
     user = SerializerMethodField()
     image = SerializerMethodField()
     html = SerializerMethodField()
+    comments = SerializerMethodField()
 
     class Meta:
         model = Blog
@@ -48,7 +51,8 @@ class BlogDetailSerializer(ModelSerializer):
             "body",
             "html",
             "pub_date",
-            "image"
+            "image",
+            "comments"
         ]
 
     def get_html(self, obj):
@@ -63,6 +67,13 @@ class BlogDetailSerializer(ModelSerializer):
         except:
             image = None
         return image
+
+    def get_comments(self, obj):
+        content_type = obj.get_content_type
+        object_id = obj.id
+        comments_qs = Comment.objects.filter_by_instance(obj)
+        comments = CommentSerializer(comments_qs, many=True).data
+        return comments
 
 
 class BlogCreateUpdateSerializer(ModelSerializer):
