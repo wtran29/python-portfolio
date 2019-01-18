@@ -7,7 +7,7 @@ from apps.blog.api.views import (
     BlogCreateAPIView,
 )
 
-app_name = 'blogs'
+app_name = 'blogs-api'
 urlpatterns = [
     url(r'^$', BlogListAPIView.as_view(), name='all'),
     url(r'^(?P<blog_id>\d+)$', BlogDetailAPIView.as_view(), name='detail'),
