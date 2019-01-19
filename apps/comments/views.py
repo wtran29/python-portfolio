@@ -38,10 +38,11 @@ def comment_thread(request, comment_id):
         obj = Comment.objects.get(id=comment_id)
     except:
         raise Http404
-    content_object = obj.content_object
-    content_id = obj.content_object.id
+
     if not obj.is_parent:
         obj = obj.parent
+    content_object = obj.content_object
+    content_id = obj.content_object.id
 
     initial_data = {
         "content_type": obj.content_type,

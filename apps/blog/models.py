@@ -5,7 +5,7 @@ from django.db.models.signals import pre_save
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.safestring import mark_safe
-
+from django.utils.text import slugify
 
 from markdown_deux import markdown
 from apps.comments.models import Comment
@@ -31,6 +31,7 @@ class Blog(models.Model):
     width_field = models.IntegerField(default=0)
     video = models.CharField(max_length=5000, blank=True)
     body = models.TextField()
+    slug = models.SlugField(max_length=150, unique=True)
     draft = models.BooleanField(default=False)
     read_time = models.TimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -50,8 +51,11 @@ class Blog(models.Model):
     #     return self.pub_date.strftime('%e %b %Y')
 
     def get_absolute_url(self):
-        return reverse("blogs:detail", kwargs={"blog_id": self.id})
+        return reverse("blogs:detail", kwargs={"slug": self.slug})
         # return "/blog/%s" % self.id
+
+    def get_api_url(self):
+        return reverse("posts-api:detail", kwargs={"slug": self.slug})
 
     @property
     def comments(self):
@@ -66,7 +70,21 @@ class Blog(models.Model):
         return content_type
 
 
-def pre_save_post_receiver(sender, instance, *args, **kwargs):
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.title)
+    if new_slug is not None:
+        slug = new_slug
+    qs = Blog.objects.filter(slug=slug).order_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "%s-%s" % (slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
+
+def pre_save_blog_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
 
     if instance.body:
         html_string = instance.get_html()
@@ -74,4 +92,4 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
         instance.read_time = read_time_var
 
 
-pre_save.connect(pre_save_post_receiver, sender=Blog)
+pre_save.connect(pre_save_blog_receiver, sender=Blog)

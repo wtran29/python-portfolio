@@ -20,14 +20,14 @@ class CommentManager(models.Manager):
         return qs
 
     # Handles the create method for CommentCreateSerializer
-    def create_by_model_type(self, model_type, object_id, content, user, parent_obj=None):
+    def create_by_model_type(self, model_type, slug, content, user, parent_obj=None):
         model_qs = ContentType.objects.filter(model=model_type)
         if model_qs.exists():
             SomeModel = model_qs.first().model_class()
             # obj_qs has to do with where the comment is going
             # not the actual comment itself
-            obj_qs = SomeModel.objects.filter(object_id=self.object_id)
-            if obj_qs.exists() or obj_qs.count() == 1:
+            obj_qs = SomeModel.objects.filter(slug=slug)
+            if obj_qs.exists() and obj_qs.count() == 1:
                 instance = self.model()
                 instance.content = content
                 instance.user = user

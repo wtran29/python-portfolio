@@ -63,15 +63,14 @@ class BlogListAPIView(ListAPIView):
 class BlogDetailAPIView(RetrieveAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogDetailSerializer
-    lookup_field = "id"
-    lookup_url_kwarg = "blog_id"
+    lookup_field = "slug"
 
 
 class BlogUpdateAPIView(RetrieveUpdateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogCreateUpdateSerializer
-    lookup_field = "id"
-    lookup_url_kwarg = "blog_id"
+    lookup_field = "slug"
+
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def perform_update(self, serializer):
@@ -81,6 +80,5 @@ class BlogUpdateAPIView(RetrieveUpdateAPIView):
 class BlogDeleteAPIView(DestroyAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogDetailSerializer
-    lookup_field = "id"
-    lookup_url_kwarg = "blog_id"
+    lookup_field = "slug"
     permission_classes = [IsOwnerOrReadOnly]

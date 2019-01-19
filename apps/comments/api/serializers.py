@@ -14,7 +14,7 @@ User = get_user_model()
 
 
 # Custom CommentCreateSerializer to handle validation for object id and parent
-def create_comment_serializer(model_type='POST', object_id=None, parent_id=None):
+def create_comment_serializer(model_type='blog', slug=None, parent_id=None, user=None):
     class CommentCreateSerializer(ModelSerializer):
         class Meta:
             model = Comment
@@ -28,9 +28,9 @@ def create_comment_serializer(model_type='POST', object_id=None, parent_id=None)
         # Initializing class with the arguments passed
         def __init__(self, *args, **kwargs):
             self.model_type = model_type
-            self.object_id = object_id
+            self.slug = slug
             self.parent_obj = None
-            if self.parent_id:
+            if self.parent_obj:
                 parent_qs = Comment.objects.filter(id=parent_id)
                 if parent_qs.exists() and parent_qs.count() == 1:
                     self.parent_obj = parent_qs.first()
@@ -45,24 +45,26 @@ def create_comment_serializer(model_type='POST', object_id=None, parent_id=None)
             # Made to last for other kinds of comments
             # so this serializer can be used in other places
             SomeModel = model_qs.first().model_class()
-            obj_qs = SomeModel.objects.filter(object_id=self.object_id)
+            obj_qs = SomeModel.objects.filter(slug=self.slug)
             if not obj_qs.exists() or obj_qs.count() != 1:
-                raise ValidationError("Not an object id for this content type")
+                raise ValidationError("Not a slug for this content type")
             return data
 
         def create(self, validated_data):
             content = validated_data.get("content")
-            user = User.objects.all().first()
+            if user:
+                primary_user = user
+            else:
+                primary_user = User.objects.all().first()
             model_type = self.model_type
-            object_id = self.object_id
+            slug = self.slug
             parent_obj = self.parent_obj
             comment = Comment.objects.create_by_model_type(
-                model_type=model_type,
-                object_id=object_id,
-                content=content,
-                user=user,
-                parent_obj=parent_obj
-
+                model_type,
+                slug,
+                content,
+                primary_user,
+                parent_obj=parent_obj,
             )
             return comment
 
@@ -96,6 +98,7 @@ class CommentChildSerializer(ModelSerializer):
         model = Comment
         fields = [
             "id",
+            "user",
             "content",
             "updated_at",
         ]

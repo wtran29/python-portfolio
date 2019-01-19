@@ -11,8 +11,8 @@ from apps.blog.models import Blog
 
 blog_detail_url = HyperlinkedIdentityField(
     view_name='blogs-api:detail',
-    lookup_field='id',
-    lookup_url_kwarg='blog_id'
+    lookup_field='slug',
+
 )
 
 
@@ -26,6 +26,7 @@ class BlogListSerializer(ModelSerializer):
             "url",
             "user",
             "title",
+            "slug",
             "body",
             "pub_date",
         ]
@@ -48,6 +49,7 @@ class BlogDetailSerializer(ModelSerializer):
             "id",
             "user",
             "title",
+            "slug",
             "body",
             "html",
             "pub_date",

@@ -42,17 +42,17 @@ def allblogs(request):
     return render(request, "blog/list.html", context)
 
 
-def detail(request, blog_id):
-    blog = get_object_or_404(Blog, pk=blog_id)
-    if blog.draft or blog.pub_date > timezone.now().date():
+def detail(request, slug=None):
+    instance = get_object_or_404(Blog, slug=slug)
+    if instance.draft or instance.pub_date > timezone.now().date():
         if not request.user.is_staff or not request.user.is_superuser:
             raise Http404
     # Converting string into url
-    share_quote = quote_plus(blog.body)
+    share_quote = quote_plus(instance.body)
 
     initial_data = {
-        "content_type": blog.get_content_type,
-        "object_id": blog_id
+        "content_type": instance.get_content_type,
+        "object_id": instance.id
     }
     comment_form = CommentForm(request.POST or None, initial=initial_data)
     if comment_form.is_valid() and request.user.is_authenticated:
@@ -84,9 +84,9 @@ def detail(request, blog_id):
         return redirect(new_comment.content_object.get_absolute_url())
 
     # This gives all the comments using BlogManager
-    comments = blog.comments  # Getting the comments as a property vs qs - Comment.objects.filter_by_instance(blog)
+    comments = instance.comments  # Getting the comments as a property vs qs - Comment.objects.filter_by_instance(blog)
     context = {
-        'blog': blog,
+        'blog': instance,
         'share_quote': share_quote,
         'comments': comments,
         'comment_form': comment_form,
@@ -116,10 +116,10 @@ def create(request):
     return render(request, 'blog/form.html', context)
 
 
-def update(request, blog_id=None):
+def update(request, slug=None):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
-    instance = get_object_or_404(Blog, pk=blog_id)
+    instance = get_object_or_404(Blog, slug=slug)
     form = BlogForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
 
@@ -136,10 +136,10 @@ def update(request, blog_id=None):
     return render(request, "blog/form.html", context)
 
 
-def delete(request, blog_id=None):
+def delete(request, slug=None):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
-    instance = get_object_or_404(Blog, pk=blog_id)
+    instance = get_object_or_404(Blog, slug=slug)
     instance.delete()
     messages.success(request, "Successfully deleted.")
     return redirect("blogs:all")
