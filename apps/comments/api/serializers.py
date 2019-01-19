@@ -12,6 +12,13 @@ from apps.comments.models import Comment
 
 User = get_user_model()
 
+comments_detail_url = HyperlinkedIdentityField(
+    view_name='comments-api:thread',
+    lookup_field="id",
+    lookup_url_kwarg="comment_id"
+
+)
+
 
 # Custom CommentCreateSerializer to handle validation for object id and parent
 def create_comment_serializer(model_type='blog', slug=None, parent_id=None, user=None):
@@ -91,6 +98,26 @@ class CommentSerializer(ModelSerializer):
         return 0
 
 
+class CommentListSerializer(ModelSerializer):
+    url = comments_detail_url
+    replies_count = SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = [
+            "id",
+            "url",
+            "content",
+            "replies_count",
+            "updated_at",
+        ]
+
+    def get_replies_count(self, obj):
+        if obj.is_parent:
+            return obj.children().count()
+        return 0
+
+
 class CommentChildSerializer(ModelSerializer):
 
     class Meta:
@@ -106,18 +133,32 @@ class CommentChildSerializer(ModelSerializer):
 class CommentDetailSerializer(ModelSerializer):
     replies = SerializerMethodField()
     replies_count = SerializerMethodField()
+    content_object_url = SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = [
             "id",
-            "content_type",
-            "object_id",
+            # "content_type",
+            # "object_id",
             "content",
             "replies_count",
             "replies",
             "updated_at",
+            "content_object_url",
         ]
+        read_only_fields = [
+            # 'content_type',
+            # 'object_id',
+            'replies_count',
+            'replies',
+        ]
+
+    def get_content_object_url(self, obj):
+        try:
+            return obj.content_object.get_api_url()
+        except:
+            return None
 
     def get_replies(self, obj):
         if obj.is_parent:
@@ -138,13 +179,3 @@ class CommentEditSerializer(ModelSerializer):
             "content",
             "updated_at",
         ]
-
-    def get_replies(self, obj):
-        if obj.is_parent:
-            return CommentChildSerializer(obj.children(), many=True).data
-        return None
-
-    def get_replies_count(self, obj):
-        if obj.is_parent:
-            return obj.children().count()
-        return 0

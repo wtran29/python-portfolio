@@ -21,7 +21,7 @@ from rest_framework.permissions import (
     IsAdminUser,
     IsAuthenticatedOrReadOnly,
 )
-from apps.blog.api.pagination import BlogLimitOffsetPagination, BlogPageNumberPagination
+from apps.comments.api.pagination import CommentLimitOffsetPagination, CommentPageNumberPagination
 from apps.blog.api.permissions import IsOwnerOrReadOnly
 
 
@@ -29,10 +29,10 @@ from apps.comments.models import Comment
 
 
 from .serializers import (
-    CommentSerializer,
+    CommentListSerializer,
     CommentDetailSerializer,
     create_comment_serializer,
-    CommentEditSerializer,
+
 )
 
 
@@ -54,15 +54,15 @@ class CommentCreateAPIView(CreateAPIView):
 
 
 class CommentListAPIView(ListAPIView):
-    serializer_class = CommentSerializer
+    serializer_class = CommentListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     ordering = 'created_at'
     search_fields = ['content', 'user__first_name']
-    pagination_class = BlogPageNumberPagination  # PageNumberPagination
+    pagination_class = CommentPageNumberPagination  # PageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
         # blogs_list = super(BlogListAPIView, self).get_queryset(*args, **kwargs)
-        comments_list = Comment.objects.all()
+        comments_list = Comment.objects.filter(id__gte=0)
         query = self.request.GET.get('q')
         if query:
             comments_list = comments_list.filter(
@@ -73,18 +73,19 @@ class CommentListAPIView(ListAPIView):
         return comments_list
 
 
-class CommentDetailAPIView(RetrieveAPIView):
+class CommentEditAPIView(RetrieveAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentDetailSerializer
     lookup_field = "id"
     lookup_url_kwarg = "comment_id"
 
 
-class CommentEditAPIView(DestroyModelMixin, UpdateModelMixin, RetrieveAPIView):
+class CommentDetailAPIView(DestroyModelMixin, UpdateModelMixin, RetrieveAPIView):
     queryset = Comment.objects.filter(id__gte=0)
-    serializer_class = CommentEditSerializer
+    serializer_class = CommentDetailSerializer
     lookup_field = "id"
     lookup_url_kwarg = "comment_id"
+    # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)

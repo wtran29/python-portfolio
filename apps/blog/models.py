@@ -55,7 +55,7 @@ class Blog(models.Model):
         # return "/blog/%s" % self.id
 
     def get_api_url(self):
-        return reverse("posts-api:detail", kwargs={"slug": self.slug})
+        return reverse("blogs-api:detail", kwargs={"slug": self.slug})
 
     @property
     def comments(self):
