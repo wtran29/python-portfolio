@@ -21,6 +21,7 @@ from rest_framework.permissions import (
 from apps.blog.api.pagination import BlogLimitOffsetPagination, BlogPageNumberPagination
 from apps.blog.api.permissions import IsOwnerOrReadOnly
 
+
 from apps.comments.models import Comment
 
 
@@ -51,6 +52,7 @@ class CommentCreateAPIView(CreateAPIView):
 class CommentListAPIView(ListAPIView):
     serializer_class = CommentSerializer
     filter_backends = [SearchFilter, OrderingFilter]
+    ordering = 'created_at'
     search_fields = ['content', 'user__first_name']
     pagination_class = BlogPageNumberPagination  # PageNumberPagination
 

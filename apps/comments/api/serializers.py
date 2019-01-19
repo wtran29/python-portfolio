@@ -20,7 +20,6 @@ def create_comment_serializer(model_type='blog', slug=None, parent_id=None, user
             model = Comment
             fields = [
                 'id',
-                'parent',
                 'content',
                 'updated_at'
             ]
@@ -30,7 +29,7 @@ def create_comment_serializer(model_type='blog', slug=None, parent_id=None, user
             self.model_type = model_type
             self.slug = slug
             self.parent_obj = None
-            if self.parent_obj:
+            if parent_id:
                 parent_qs = Comment.objects.filter(id=parent_id)
                 if parent_qs.exists() and parent_qs.count() == 1:
                     self.parent_obj = parent_qs.first()

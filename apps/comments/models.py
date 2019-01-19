@@ -66,7 +66,7 @@ class Comment(models.Model):
         return reverse("comments:delete", kwargs={"comment_id": self.id})
 
     def children(self):  # Replies to comments
-        return Comment.objects.filter(parent=self).order_by("created_at")
+        return Comment.objects.filter(parent=self).order_by('created_at')
 
     @property
     def is_parent(self):
