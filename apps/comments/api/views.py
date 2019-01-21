@@ -39,7 +39,7 @@ from .serializers import (
 class CommentCreateAPIView(CreateAPIView):
     queryset = Comment.objects.all()
     # serializer_class = BlogCreateUpdateSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
         model_type = self.request.GET.get("type")
@@ -55,6 +55,7 @@ class CommentCreateAPIView(CreateAPIView):
 
 class CommentListAPIView(ListAPIView):
     serializer_class = CommentListSerializer
+    permission_classes = [AllowAny]
     filter_backends = [SearchFilter, OrderingFilter]
     ordering = 'created_at'
     search_fields = ['content', 'user__first_name']
@@ -85,7 +86,7 @@ class CommentDetailAPIView(DestroyModelMixin, UpdateModelMixin, RetrieveAPIView)
     serializer_class = CommentDetailSerializer
     lookup_field = "id"
     lookup_url_kwarg = "comment_id"
-    # permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
