@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from apps.accounts.views import login_view, register_view, logout_view
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,4 +32,5 @@ urlpatterns = [
     url(r'^api/users/', include('apps.accounts.api.urls', namespace="users-api")),
     url(r'^api/blog/', include('apps.blog.api.urls', namespace="blogs-api")),
     url(r'^api/comments/', include('apps.comments.api.urls', namespace="comments-api")),
+    url(r'^api/auth/token/', obtain_jwt_token),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
