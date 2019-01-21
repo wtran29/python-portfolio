@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login, authenticate
 
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
@@ -50,7 +50,11 @@ class UserLoginAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
         data = request.data
+        username = request.data.get("username", None)
+        password = request.data.get("password", None)
+        user = authenticate(request, username=username, password=password)
         serializer = UserLoginSerializer(data=data)
+        login(request, user)
         if serializer.is_valid(raise_exception=True):
             new_data = serializer.data
             return Response(new_data, status=HTTP_200_OK)

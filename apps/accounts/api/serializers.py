@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
+from rest_framework_jwt.settings import api_settings
 from django.db.models import Q
 
 from rest_framework.serializers import (
@@ -10,6 +11,9 @@ from rest_framework.serializers import (
     EmailField,
     CharField
 )
+
+jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 User = get_user_model()
 
@@ -28,7 +32,8 @@ class UserDetailSerializer(ModelSerializer):
 class UserCreateSerializer(ModelSerializer):
     email = EmailField(label='Email address')
     email2 = EmailField(label='Confirm email')
-
+    password = CharField(style={'input_type': 'password'})
+    
     class Meta:
         model = User
         fields = [
@@ -75,6 +80,7 @@ class UserLoginSerializer(ModelSerializer):
     token = CharField(allow_blank=True, read_only=True)
     username = CharField(required=False, allow_blank=True)
     email = EmailField(label='Email address', required=False, allow_blank=True)
+    password = CharField(style={'input_type': 'password'})
 
     class Meta:
         model = User
@@ -111,7 +117,7 @@ class UserLoginSerializer(ModelSerializer):
             if not user_obj.check_password(password):
                 raise ValidationError("Incorrect credentials. Please try again.")
 
-        data['token'] = "SOME RANDOM TOKEN"
+        data['token'] = jwt_encode_handler(jwt_payload_handler(user_obj))
         return data
 
 

@@ -32,5 +32,5 @@ urlpatterns = [
     url(r'^api/users/', include('apps.accounts.api.urls', namespace="users-api")),
     url(r'^api/blog/', include('apps.blog.api.urls', namespace="blogs-api")),
     url(r'^api/comments/', include('apps.comments.api.urls', namespace="comments-api")),
-    url(r'^api/auth/token/', obtain_jwt_token),
+    url(r'^api/auth/token/', obtain_jwt_token, name='create-token'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
