@@ -1,11 +1,27 @@
 {% extends "blog/base.html" %}
+{% load staticfiles %}
 {% block content %}
 
 <main role="main">
+    <div class="container">
+        <h1 class="blog-title">Are you "fake news"?</h1>
+        <img class="img-responsive" src="{% static 'blog/images/fake-news.jpg' %}" width="100%">
+        <p>Nowadays it's hard to tell what's real news and what's fake news. Don't be fooled!</p>
+        <h2>Fortunately, we're here to clear the air!</h2>
+        <p>We are the REAL FAKE NEWS. We take probably cause and turn it into probable cause. 'Cause it probably happened.  Don't become a laughing stock in front of your friends
+         and stay informed with us.</p>
+        <h3>Seeking talented reporters.</h3>
+        <p>As you may be aware, we are in a shortage of real fake news. The good news is that this gives opportunities to those who
+        take fake reporting seriously. Don't let something that hasn't happened stop you from telling it as if it did happened. Read our guidelines.</p>
+        <h5>Guidelines</h5>
+        <ul>
+            <li>Must be real fake.</li>
+            <li>Must be convincing.</li>
+        </ul>
+        <p>If this sounds like you, then register <a href="{% url 'register' %}">here</a> or <a href="{% url 'login' %}">login</a> to get started. However, if you are looking for a talented Software Developer, contact <a href="mailto:wtran4hire@gmail.com">wtran4hire@gmail.com</a>.</p>
 
-    <div class="container px-5">
         <h1 class="blog-title pt-4 d-inline-block mr-2">Recent Posts</h1>
-        <a class="btn btn-success mb-3" href="create" role="button"><i class="fas fa-plus"></i> Create</a>
+        {% if request.user.is_authenticated %}<a class="btn btn-success mb-3" href="{% url 'blogs:create' %}" role="button"><i class="fas fa-plus"></i> Create</a>{% endif %}
         <div class="col-sm-6 row">
             <form class="input-group" method="GET" action="">
                 <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Search for..."/>

@@ -17,13 +17,13 @@
 }
 
 .jumbotron {
-    background-image: url('../../blog/images/billy.jpg');
+    background-image: url('../../blog/images/news.jpg');
     background-size: cover;
 }
 
 .jumbotron-heading {
-    font-family: 'Good Vibrations', sans-serif;
-    color: darkgoldenrod;
+    /* font-family: 'Good Vibrations', sans-serif; */
+    color: white;
     text-shadow: 2px 2px 5px black;
 }
 

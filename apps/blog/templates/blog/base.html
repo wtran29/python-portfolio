@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}Blog{% endblock title %}</title>
+    <title>{% block title %}#1 Source for REAL FAKE NEWS{% endblock title %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" media="screen" title="no title" charset="utf-8">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{% static 'work/images/resume2018v2.pdf' %}">Resume</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/blog">Blog</a>
+                    <a class="nav-link" href="/blog">#RealFakeNews</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mailto:wtran4hire@gmail.com">Contact</a>
@@ -57,8 +57,8 @@
 </header>
 <section class="jumbotron jumbotron-fluid text-center">
     <div class="container">
-        <h1 class="jumbotron-heading display-4">Welcome to Billy's Blog</h1>
-        <p class="header-text">A place to ramble about all things.</p>
+        <h1 class="jumbotron-heading display-4 font-weight-bold">#REAL FAKE NEWS</h1>
+        <p class="header-text">{{ header_text|random }}</p>
     </div>
 </section>
 <div id="fb-root"></div>
@@ -72,7 +72,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 {% include "blog/messages.html" %}
-<div class="container px-5">
+<div class="container">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
         <li class="breadcrumb-item"><a href="{% url 'blogs:all' %}">Blogs</a></li>
@@ -85,6 +85,8 @@
         <li class="breadcrumb-item ml-auto"><a href="{% url 'logout' %}">Logout</a></li>
         {% endif %}
     </ol>
+</div>
+<div class="container px-5">
     {% block content %}
     {% endblock content %}
 </div>

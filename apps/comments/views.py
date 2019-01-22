@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from .models import Comment
 from .forms import CommentForm
+from apps.blog.utils import get_header_text
 # Create your views here.
 
 
@@ -28,6 +29,7 @@ def comment_delete(request, comment_id):
         return redirect(parent_obj_url)
     context = {
         "object": obj,
+        "header_text": get_header_text
     }
     return render(request, "comments/confirm_delete.html", context)
 
@@ -46,7 +48,7 @@ def comment_thread(request, comment_id):
 
     initial_data = {
         "content_type": obj.content_type,
-        "object_id": obj.object_id,
+        "object_id": obj.object_id
     }
     form = CommentForm(request.POST or None, initial=initial_data)
     if form.is_valid() and request.user.is_authenticated:
@@ -79,6 +81,7 @@ def comment_thread(request, comment_id):
     context = {
         "comment": obj,
         "form": form,
+        "header_text": get_header_text
     }
     return render(request, "comments/comment_thread.html", context)
 

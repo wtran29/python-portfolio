@@ -33,7 +33,7 @@ class UserCreateSerializer(ModelSerializer):
     email = EmailField(label='Email address')
     email2 = EmailField(label='Confirm email')
     password = CharField(style={'input_type': 'password'})
-    
+
     class Meta:
         model = User
         fields = [

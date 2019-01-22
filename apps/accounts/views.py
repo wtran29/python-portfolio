@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.shortcuts import render, redirect
 
 from .forms import UserLoginForm, UserRegisterForm
+from apps.blog.utils import get_header_text
 
 
 def login_view(request):
@@ -19,7 +20,8 @@ def login_view(request):
         return redirect("/blog")
     context = {
         "form": form,
-        "title": title
+        "title": title,
+        "header_text": get_header_text
     }
     return render(request, "accounts/form.html", context)
 
@@ -42,6 +44,7 @@ def register_view(request):
     context = {
         "form": form,
         "title": title,
+        "header_text": get_header_text
     }
     return render(request, "accounts/form.html", context)
 

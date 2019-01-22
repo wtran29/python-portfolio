@@ -11,6 +11,7 @@ from django.utils import timezone
 
 from .forms import BlogForm
 from .models import Blog
+from apps.blog.utils import get_header_text
 from apps.comments.forms import CommentForm
 from apps.comments.models import Comment
 # Create your views here.
@@ -37,7 +38,8 @@ def allblogs(request):
     context = {
         'blogs': blogs,
         'today': today,
-        'page_variable': page_variable
+        'page_variable': page_variable,
+        'header_text': get_header_text
     }
     return render(request, "blog/list.html", context)
 
@@ -90,6 +92,7 @@ def detail(request, slug=None):
         'share_quote': share_quote,
         'comments': comments,
         'comment_form': comment_form,
+        'header_text': get_header_text
 
     }
     return render(request, 'blog/detail.html', context)
@@ -132,6 +135,7 @@ def update(request, slug=None):
         "title": instance.title,
         "instance": instance,
         "form": form,
+        'header_text': get_header_text
     }
     return render(request, "blog/form.html", context)
 
