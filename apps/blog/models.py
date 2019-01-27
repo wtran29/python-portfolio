@@ -8,7 +8,7 @@ from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 
 from markdown_deux import markdown
-from apps.comments.models import Comment
+from ..comments.models import Comment
 
 from .utils import get_read_time
 # Create your models here.

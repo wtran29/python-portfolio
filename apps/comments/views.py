@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from .models import Comment
 from .forms import CommentForm
-from apps.blog.utils import get_header_text
+from ..blog.utils import get_header_text
 # Create your views here.
 
 

@@ -12,8 +12,8 @@ from django.utils import timezone
 from .forms import BlogForm
 from .models import Blog
 from .utils import get_header_text
-from apps.comments.forms import CommentForm
-from apps.comments.models import Comment
+from ..comments.forms import CommentForm
+from ..comments.models import Comment
 # Create your views here.
 
 

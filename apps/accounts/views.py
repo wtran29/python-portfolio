@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.shortcuts import render, redirect
 
 from .forms import UserLoginForm, UserRegisterForm
-from apps.blog.utils import get_header_text
+from ..blog.utils import get_header_text
 
 
 def login_view(request):
