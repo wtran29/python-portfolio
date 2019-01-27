@@ -21,7 +21,7 @@ class BlogManager(models.Manager):
 
 
 class Blog(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="blogs", default=1, on_delete=models.CASCADE)
     pub_date = models.DateField(auto_now=False, auto_now_add=False)
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/', blank=True,

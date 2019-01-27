@@ -264,6 +264,12 @@ offset = element.offset();
 offsetTop = offset.top;
 $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
+
+$(function () {
+  $('[data-toggle="popover"]').popover({
+    trigger: 'focus'
+  })
+})
 </script>
 </body>
 </html>

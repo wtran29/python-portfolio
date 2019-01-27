@@ -35,11 +35,13 @@ def allblogs(request):
     page_variable = "page"
     page = request.GET.get(page_variable)
     blogs = paginator.get_page(page)
+
     context = {
         'blogs': blogs,
         'today': today,
         'page_variable': page_variable,
-        'header_text': get_header_text
+        'header_text': get_header_text,
+
     }
     return render(request, "blog/list.html", context)
 
@@ -47,7 +49,7 @@ def allblogs(request):
 def detail(request, slug=None):
     instance = get_object_or_404(Blog, slug=slug)
     if instance.draft or instance.pub_date > timezone.now().date():
-        if not request.user.is_staff or not request.user.is_superuser:
+        if not request.user.is_staff:
             raise Http404
     # Converting string into url
     share_quote = quote_plus(instance.body)
@@ -99,7 +101,8 @@ def detail(request, slug=None):
 
 
 def create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
+    print(request.user.is_staff)
+    if not request.user.is_staff:
         raise Http404
 
     if not request.user.is_authenticated:
@@ -115,18 +118,27 @@ def create(request):
         return redirect(instance.get_absolute_url())
     context = {
         "form": form,
+        "header_text": get_header_text
     }
     return render(request, 'blog/form.html', context)
 
 
 def update(request, slug=None):
-    if not request.user.is_staff or not request.user.is_superuser:
+    if not request.user.is_staff:
         raise Http404
     instance = get_object_or_404(Blog, slug=slug)
     form = BlogForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
 
         instance = form.save(commit=False)
+        try:
+            blog_user_id = int(request.POST.get("blog_user"))
+        except:
+            blog_user_id = None
+        if blog_user_id:
+            blog_user_qs = Blog.objects.filter(id=blog_user_id)
+            if blog_user_qs.exists and blog_user_qs.count() == 1:
+                instance.blog_user_obj = blog_user_qs.first()
         instance.save()
         # message success
         messages.success(request, "Blog updated.", extra_tags='html_safe')

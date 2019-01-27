@@ -323,9 +323,22 @@ main {
 }
 
 @media (max-width: 991px) {
-
     .video {
         display: none;
     }
+    .flex-container {
+        display: initial!important;
+    }
+    .profile {
+        margin: 0.5rem 0;
+    }
+
 }
 
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}

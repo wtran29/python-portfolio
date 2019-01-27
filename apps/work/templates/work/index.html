@@ -27,13 +27,9 @@
 <body>
 
 <header>
-    <div class="scroll-top-wrapper">
-    <span class="scroll-top-inner">
-        <i class="fa fa-2x fa-chevron-up"></i>
-    </span>
-    </div>
 
-    <section class="parallax-main">
+
+    <div class="parallax-main m-0">
         <div class="parallax-top text-center" style="display: none;">
             {% include 'snippets/nav.html' %}
 
@@ -45,10 +41,10 @@
 
             <nav class="navbar navbar-trans navbar-expand-lg navbar-dark navbar-inverse">
                 <a class="navbar-brand" href="/">William Tran</a>
-                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
-                        <!--aria-expanded="false" aria-label="Toggle navigation">-->
-                    <!--<span class="navbar-toggler-icon"></span>-->
-                <!--</button>-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
@@ -74,12 +70,12 @@
                 </div>
             </nav>
             <div class="pt-5 px-3 flex-container">
-                <!--<div id="joystick" class="d-inline-block profile">-->
-                    <!--<div id="mover" data-toggle="popover" data-content="Hello, welcome to my site.">-->
-                        <!--<img class="pic" src="{% static 'work/images/profile.jpg' %}" height="200">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <div class="text-center mb-5">
+                <div id="joystick" class="d-inline-block profile">
+                    <div id="mover" data-toggle="popover" data-content="Hello, welcome to my site.">
+                        <img class="pic img-responsive" src="{% static 'work/images/profile.jpg' %}" height="200">
+                    </div>
+                </div>
+                <div class="text-center mb-5 py-2">
                     <h2 class="header-slideLeft">William Tran</h2>
                     <p class="lead" data-aos="fade-left" data-aos-duration="3000">DEDICATED, FOCUSED, and DRIVEN</p>
                     <p class="header-summary" data-aos="fade-left" data-aos-duration="2000">
@@ -91,76 +87,80 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </header>
+    <div class="scroll-top-wrapper">
+        <span class="scroll-top-inner">
+            <i class="fa fa-2x fa-chevron-up"></i>
+        </span>
+    </div>
+    <main role="main">
 
-<main role="main">
 
-    <section id="about">
-        <div class="container py-5">
-            <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                <h1>//Background</h1>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up">
-                    <i class="fas fa-user fa-lg fa-5x py-4"></i>
-                    <h5>About Me</h5>
-                    <p class="text-justify">I am thankful for the opportunities and experiences that made me who I am today.
-                        Although hard work and experience may be important, I believe success is dependent on the willingness to
-                        learn and not settle at your best. I am grateful and humble to accept that I may not know everything
-                        but have the persistence to figure it out.
-                    </p>
+        <section id="about">
+            <div class="container py-5">
+                <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                    <h1>//Background</h1>
                 </div>
-                <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="1000">
-                    <i class="fas fa-code fa-lg fa-5x py-4"></i>
-                    <h5>Software Development</h5>
-                    <p class="text-justify">I'm focused on Python/Django programming but can build in Java/Spring Boot and MEAN stack as well.
-                        I enjoy the many logical and creative approaches to solving problems in building apps. I follow Object Oriented Programming
-                        methods, and handling logic through MVT and MVC.
-                    </p>
-                </div>
-                <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="2000">
-                    <i class="fas fa-dollar-sign fa-lg fa-5x py-4"></i>
-                    <h5>Finance and Accounting</h5>
-                    <p class="text-justify">I have 10+ years combined of Financial Analysis and Accounting experience. I've worked in various
-                        industries, including Real Estate, Food and Beverage, and Banking. My experiences
-                        has helped me incorporate my analytical skills, attention to detail and collaborate with
-                        others.
-                    </p>
-                </div>
-                <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="3000">
-                    <i class="fas fa-suitcase fa-lg fa-5x py-4"></i>
-                    <h5>Professional Goals</h5>
-                    <p class="text-justify">I hope to make a positive impact in peoples' lives through software development.
-                        My goal is to build purposeful and interesting apps that provide value. I seek to incorporate Data Science
-                        in the near future to create apps for data analytics and improve processes. I continue to challenge myself and
-                        dedicate to improving my craft.
-                    </p>
-                </div>
-                <div class="col-lg-12 text-center pb-2" data-aos="fade-up" data-aos-duration="2000">
-                    <i class="far fa-eye fa-lg fa-5x pb-4"></i>
-                    <h2>Vision</h2>
-                    <p><i>To bring value through functionality, innovation and design.</i></p>
-                    <p>I believe what helps grow a company is their capacity to keep learning and humbleness to accept they may
-                        not be at the top of the industry. If your company is on top, know that your competitors are
-                        working twice as hard to surpass you. In any case, you are lucky that your company is a family
-                        of entrepreneurs. At any given moment, an employee can suddenly strike up the brilliance to solve
-                        the most complicated problems.</p>
-                    <p><big>This wouldn't have been made possible without one thing:</big></p>
-                    <h4><b><i>Trust</i>.</b></h4>
-                    <p><i>Trust cultivates ideas and grow companies. Trust those who share the same values. Trust in me.</i></p>
-                </div>
-                <div class="col-12">
-                    <div class="text-center">
-                        <a class="btn btn-dark mx-1" href="{% static 'work/images/resume2018v2.pdf' %}" data-aos="fade-up-right" data-aos-duration="2000">Download Resume</a>
-                        <a class="btn btn-outline-dark mx-1" href="http://github.com/wtran29" data-aos="fade-up-left" data-aos-duration="2000">Visit My GitHub</a>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up">
+                        <span style="color:goldenrod;"><i class="fas fa-user fa-lg fa-5x py-4"></i></span>
+                        <h5>About Me</h5>
+                        <p class="text-justify">I am thankful for the opportunities and experiences that made me who I am today.
+                            Although hard work and experience may be important, I believe success is dependent on the willingness to
+                            learn and not settle. I am grateful and humble to accept that I may not know everything
+                            but have the persistence to figure it out.
+                        </p>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="1000">
+                        <span style="color: darkgreen;"><i class="fas fa-dollar-sign fa-lg fa-5x py-4"></i></span>
+                        <h5>Finance and Accounting</h5>
+                        <p class="text-justify">I have 10+ years combined of Financial Analysis and Accounting experience. My experiences
+                            has helped me incorporate my analytical skills, attention to detail and collaboration with
+                            others to complement my developer skills.
+                        </p>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="2000">
+                        <span style="color:blue;"><i class="fas fa-code fa-lg fa-5x py-4"></i></span>
+                        <h5>Software Development</h5>
+                        <p class="text-justify">I'm focused on Python/Django programming but have built projects in Java/Spring Boot and MEAN stack as well.
+                            I enjoy the many logical and creative approaches to solving problems in building apps. I follow Object Oriented Programming
+                            methods, and handling logic through MVT and MVC.
+                        </p>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 py-2 text-center" data-aos="fade-up" data-aos-duration="3000">
+                        <span style="color: saddlebrown;"><i class="fas fa-suitcase fa-lg fa-5x py-4"></i></span>
+                        <h5>Professional Goals</h5>
+                        <p class="text-justify">I hope to make a positive impact in peoples' lives through software development.
+                            My goal is to build purposeful and interesting apps that provide value. I seek to incorporate Data Science
+                            in the near future to create apps for data analytics and improve processes. I continue to challenge myself and
+                            dedicate to improving my craft.
+                        </p>
+                    </div>
+                    <div class="col-lg-12 text-center pb-2" data-aos="fade-up" data-aos-duration="2000">
+                        <i class="far fa-eye fa-lg fa-5x pb-4"></i>
+                        <h2>Vision</h2>
+                        <p><i>To bring value through functionality, innovation and design.</i></p>
+                        <p>I believe what helps grow a company is their capacity to keep learning and humbleness to accept they may
+                            not be at the top of the industry. If your company is on top, know that your competitors are
+                            working twice as hard to surpass you. In any case, you are lucky that your company is a family
+                            of entrepreneurs. At any given moment, an employee can suddenly strike up the brilliance to solve
+                            the most complicated problems.</p>
+                        <p><big>This wouldn't have been made possible without one thing:</big></p>
+                        <h4><b><i>Trust</i>.</b></h4>
+                        <p><i>Trust cultivates ideas and grow companies. Trust those who share the same values. Trust in me.</i></p>
+                    </div>
+                    <div class="col-12">
+                        <div class="text-center">
+                            <a class="btn btn-dark mx-1" href="{% static 'work/images/resume2018v2.pdf' %}" data-aos="fade-up-right" data-aos-duration="2000">Download Resume</a>
+                            <a class="btn btn-outline-dark mx-1" href="http://github.com/wtran29" data-aos="fade-up-left" data-aos-duration="2000">Visit My GitHub</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="py-5 mt-5 bg-light" id="projects">
-        <!--<div>-->
+        </section>
+        <section class="py-5 mt-5 bg-light" id="projects">
+            <!--<div>-->
             <div class="container">
                 <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                     <h1>//Projects</h1>
@@ -217,17 +217,17 @@
                                     {% endfor %}
 
 
-                                    <!--<h5>// Technologies</h5>-->
-                                    <!--<div class="row">-->
-                                        <!--<div class="mx-2">-->
-                                            <!--{% for tech in project.tech %}-->
+                                    <h5>// Technologies</h5>
+                                    <div class="row">
+                                    <div class="mx-2">
+                                    {% for tech in project.tech %}
 
-                                            <!--<span class="badge bg-dark ml-1 mb-1"><p-->
-                                                    <!--class="tech-tag p-1">{{tech}}</p></span>-->
+                                    <span class="badge bg-dark ml-1 mb-1"><p
+                                    class="tech-tag p-1">{{tech}}</p></span>
 
-                                            <!--{% endfor %}-->
-                                        <!--</div>-->
-                                    <!--</div>-->
+                                    {% endfor %}
+                                    </div>
+                                    </div>
 
                                 </div>
                                 <div class="modal-footer">
@@ -257,75 +257,78 @@
                     {% endfor %}
                 </div>
             </div>
-        <!--</div>-->
-    </section>
-    <section id="tech">
-        <div class="container py-5">
-            <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                <h1>//Technologies</h1>
-            </div>
-            <div class="row pt-3">
-                <div class="tech-cat py-2 text-center">
-                    <h4 class="btn btn-dark" data-aos="flip-up">LANGUAGES</h4>
-                    <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
-                        <div class="tech-item"><i class="devicon-python-plain colored fa-3x px-3"></i><p>Python</p></div>
-                        <div class="tech-item"><i class="devicon-java-plain colored fa-3x px-3"></i><p>Java</p></div>
-                        <div class="tech-item"><i class="devicon-javascript-plain colored fa-3x px-3"></i><p>JavaScript</p></div>
-                        <div class="tech-item"><i class="devicon-typescript-plain colored fa-3x px-3"></i><p>TypeScript</p></div>
-                        <div class="tech-item pl-3"><i class="fas fa-database fa-3x pb-1 px-2"></i><p>SQL</p></div>
-                    </div>
+            <!--</div>-->
+        </section>
+        <section id="tech">
+            <div class="container py-5">
+                <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                    <h1>//Technologies</h1>
                 </div>
-                <div class="tech-cat py-2 text-center">
-                    <h4 class="btn btn-dark" data-aos="flip-up">FRAMEWORKS</h4>
-                    <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
-                        <div class="tech-item pl-2"><i class="devicon-django-plain-wordmark colored fa-3x px-3"></i><p>Django</p></div>
-                        <div class="tech-item"><i class="fab fa-angular fa-3x pb-1 px-3" style="color: #CE293A;"></i><p>Angular</p></div>
-                        <div class="tech-item"><i class="devicon-express-original colored fa-3x px-3"></i><p>Express.js</p></div>
-                        <div class="tech-item pl-2"><i class="fab fa-node fa-3x pb-1 px-2"></i><p>Node.js</p></div>
-                        <div class="tech-item pl-3"><img src="{% static 'work/images/spring.png' %}" style="width: 3em;"><p class="mt-1">Spring Boot</p></div>
+                <div class="row pt-3">
+                    <div class="tech-cat py-2 text-center">
+                        <h4 class="btn btn-dark" data-aos="flip-up">LANGUAGES</h4>
+                        <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
+                            <div class="tech-item"><i class="devicon-python-plain colored fa-3x px-3"></i><p>Python</p></div>
+                            <div class="tech-item"><i class="devicon-java-plain colored fa-3x px-3"></i><p>Java</p></div>
+                            <div class="tech-item"><i class="devicon-javascript-plain colored fa-3x px-3"></i><p>JavaScript</p></div>
+                            <div class="tech-item"><i class="devicon-typescript-plain colored fa-3x px-3"></i><p>TypeScript</p></div>
+                            <div class="tech-item pl-3"><i class="fas fa-database fa-3x pb-1 px-2"></i><p>SQL</p></div>
+                        </div>
                     </div>
-                </div>
-                <div class="tech-cat py-2 text-center">
-                    <h4 class="btn btn-dark" data-aos="flip-up">DESIGN</h4>
-                    <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
-                        <div class="tech-item"><i class="fab fa-html5 fa-4x px-3" style="color: #E35826;"></i><p>HTML</p></div>
-                        <div class="tech-item"><i class="fab fa-css3-alt fa-4x px-3" style="color: #46A3D8;"></i><p>CSS</p></div>
-                        <div class="tech-item pt-2 mt-1"><i class="devicon-jquery-plain colored fa-3x px-3"></i><p>jQuery</p></div>
-                        <div class="tech-item"><i class="devicon-bootstrap-plain colored fa-3x px-3"></i><p>Bootstrap</p></div>
+                    <div class="tech-cat py-2 text-center">
+                        <h4 class="btn btn-dark" data-aos="flip-up">FRAMEWORKS</h4>
+                        <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
+                            <div class="tech-item pl-2"><i class="devicon-django-plain-wordmark colored fa-3x px-3"></i><p>Django</p></div>
+                            <div class="tech-item"><i class="fab fa-angular fa-3x pb-1 px-3" style="color: #CE293A;"></i><p>Angular</p></div>
+                            <div class="tech-item"><i class="devicon-express-original colored fa-3x px-3"></i><p>Express.js</p></div>
+                            <div class="tech-item pl-2"><i class="fab fa-node fa-3x pb-1 px-2"></i><p>Node.js</p></div>
+                            <div class="tech-item pl-3"><img src="{% static 'work/images/spring.png' %}" style="width: 3em;"><p class="mt-1">Spring Boot</p></div>
+                        </div>
                     </div>
-                </div>
-                <div class="tech-cat py-2 text-center">
-                    <h4 class="btn btn-dark" data-aos="flip-up">DATABASES</h4>
-                    <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
-                        <div class="tech-item"><i class="devicon-mongodb-plain colored fa-3x px-3"></i><p>MongoDB</p></div>
-                        <div class="tech-item"><i class="devicon-mysql-plain colored fa-3x px-3"></i><p>MySQL</p></div>
-                        <div class="tech-item"><i class="devicon-postgresql-plain colored fa-3x px-3"></i><p>PostgesSQL</p></div>
-                        <div class="tech-item"><i class="fas fa-feather-alt fa-3x pb-1 px-3"></i><p>SQLite</p></div>
+                    <div class="tech-cat py-2 text-center">
+                        <h4 class="btn btn-dark" data-aos="flip-up">DESIGN</h4>
+                        <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
+                            <div class="tech-item"><i class="fab fa-html5 fa-4x px-3" style="color: #E35826;"></i><p>HTML</p></div>
+                            <div class="tech-item"><i class="fab fa-css3-alt fa-4x px-3" style="color: #46A3D8;"></i><p>CSS</p></div>
+                            <div class="tech-item pt-2 mt-1"><i class="devicon-jquery-plain colored fa-3x px-3"></i><p>jQuery</p></div>
+                            <div class="tech-item"><i class="devicon-bootstrap-plain colored fa-3x px-3"></i><p>Bootstrap</p></div>
+                        </div>
                     </div>
-                </div>
-                <div class="tech-cat py-2 text-center">
-                    <h4 class="btn btn-dark" data-aos="flip-up">ANALYTICS</h4>
-                    <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
-                        <div class="tech-item"><img class="mx-3" src="{% static 'work/images/jupyter.png' %}" style="width: 3em;"><p>Jupyter</p></div>
-                        <div class="tech-item"><img class="py-1 mb-1 mx-3" src="{% static 'work/images/pandas.png' %}" style="width: 3em;"><p>Pandas</p></div>
-                        <div class="tech-item"><img class="py-3 mb-1 mx-3" src="{% static 'work/images/matplot.png' %}" style="width: 3em;"><p>matplotlib</p></div>
+                    <div class="tech-cat py-2 text-center">
+                        <h4 class="btn btn-dark" data-aos="flip-up">DATABASES</h4>
+                        <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
+                            <div class="tech-item"><i class="devicon-mongodb-plain colored fa-3x px-3"></i><p>MongoDB</p></div>
+                            <div class="tech-item"><i class="devicon-mysql-plain colored fa-3x px-3"></i><p>MySQL</p></div>
+                            <div class="tech-item"><i class="devicon-postgresql-plain colored fa-3x px-3"></i><p>PostgesSQL</p></div>
+                            <div class="tech-item"><i class="fas fa-feather-alt fa-3x pb-1 px-3"></i><p>SQLite</p></div>
+                        </div>
                     </div>
-                </div>
-                <div class="tech-cat py-2 text-center">
-                    <h4 class="btn btn-dark" data-aos="flip-up">TOOLS</h4>
-                    <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
-                        <div class="tech-item"><i class="devicon-chrome-plain colored fa-3x px-3"></i><p>Chrome</p></div>
-                        <div class="tech-item"><i class="devicon-pycharm-plain colored fa-3x px-3"></i><p>PyCharm</p></div>
-                        <div class="tech-item"><i class="devicon-amazonwebservices-original colored fa-3x px-3"></i><p>AWS EC2</p></div>
-                        <div class="tech-item"><i class="devicon-git-plain colored fa-3x px-3"></i><p>Git</p></div>
-                        <div class="tech-item"><i class="devicon-google-plain colored fa-3x px-3"></i><p>Google</p></div>
+                    <div class="tech-cat py-2 text-center">
+                        <h4 class="btn btn-dark" data-aos="flip-up">ANALYTICS</h4>
+                        <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
+                            <div class="tech-item"><img class="mx-3" src="{% static 'work/images/jupyter.png' %}" style="width: 3em;"><p>Jupyter</p></div>
+                            <div class="tech-item"><img class="py-1 mb-1 mx-3" src="{% static 'work/images/pandas.png' %}" style="width: 3em;"><p>Pandas</p></div>
+                            <div class="tech-item"><img class="py-3 mb-1 mx-3" src="{% static 'work/images/matplot.png' %}" style="width: 3em;"><p>matplotlib</p></div>
+                        </div>
                     </div>
-                </div>
+                    <div class="tech-cat py-2 text-center">
+                        <h4 class="btn btn-dark" data-aos="flip-up">TOOLS</h4>
+                        <div class="tech-box row py-2 px-2 m-2" data-aos="zoom-in">
+                            <div class="tech-item"><i class="devicon-chrome-plain colored fa-3x px-3"></i><p>Chrome</p></div>
+                            <div class="tech-item"><i class="devicon-pycharm-plain colored fa-3x px-3"></i><p>PyCharm</p></div>
+                            <div class="tech-item"><i class="devicon-amazonwebservices-original colored fa-3x px-3"></i><p>AWS EC2</p></div>
+                            <div class="tech-item"><i class="devicon-git-plain colored fa-3x px-3"></i><p>Git</p></div>
+                            <div class="tech-item"><i class="devicon-nginx-original colored fa-3x px-3"></i><p>Nginx</p></div>
+                            <div class="tech-item"><i class="devicon-ubuntu-plain colored fa-3x px-3"></i><p>Ubuntu</p></div>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+
+    </main>
+
 <div class="MainContainer">
 
   <div class="ParallaxContainer">
