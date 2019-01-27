@@ -15,8 +15,8 @@
         take fake reporting seriously. Don't let something that hasn't happened stop you from telling it as if it did happened. Read our guidelines.</p>
         <h5>Guidelines</h5>
         <ul>
-            <li>Must be real fake.</li>
-            <li>Must be convincing because it's real.</li>
+            <li>Must be fictional fact.</li>
+            <li>Must be convincing.</li>
         </ul>
         <p>If this sounds like you, then register <a href="{% url 'register' %}">here</a> or <a href="{% url 'login' %}">login</a> to get started. However, if you are looking for a talented Software Developer, contact <a href="mailto:wtran4hire@gmail.com">wtran4hire@gmail.com</a>.
         <p><a tabindex="0" type="link" class="btn btn-link text-danger p-0" data-trigger="focus" data-toggle="popover" title="Built with Python/Django" data-content="If you would like a walk through of how the backend of this site was built, I would be happy to do so. I have created RESTful APIs which could be tested.">Attn: Recruiters and potential employers</a></p>
@@ -44,7 +44,6 @@
                     {% else %}
                     <p class="blog-author">Written by: {{blog.user}}</p>
                     {% endif %}
-                    <input type="hidden" name="user" value="{{blog.user}}">
                     <p class="blog-summary">{{ blog.get_html|truncatechars_html:200 }}</p>
                     <p class="blog-summary pb-2">
                         <a href="{{ blog.get_absolute_url }}" role="link">View</a>{% if blog.user.is_staff and blog.user == request.user %} |

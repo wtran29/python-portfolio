@@ -101,7 +101,6 @@ def detail(request, slug=None):
 
 
 def create(request):
-    print(request.user.is_staff)
     if not request.user.is_staff:
         raise Http404
 
@@ -131,14 +130,6 @@ def update(request, slug=None):
     if form.is_valid():
 
         instance = form.save(commit=False)
-        try:
-            blog_user_id = int(request.POST.get("blog_user"))
-        except:
-            blog_user_id = None
-        if blog_user_id:
-            blog_user_qs = Blog.objects.filter(id=blog_user_id)
-            if blog_user_qs.exists and blog_user_qs.count() == 1:
-                instance.blog_user_obj = blog_user_qs.first()
         instance.save()
         # message success
         messages.success(request, "Blog updated.", extra_tags='html_safe')
