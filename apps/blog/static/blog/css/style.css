@@ -187,11 +187,20 @@
     .blog-body {
         padding: 0 1rem;
     }
+    .blog-content {
+        padding: 0 2rem!important;
+    }
 }
 
 @media-only screen and (min-width: 376px) and (max-width: 425px) {
     .scroll-top-wrapper {
         right: 3.5em!important;
+    }
+    .blog-body {
+        padding: 0 1rem;
+    }
+    .blog-content {
+        padding: 0 2rem!important;
     }
 }
 
