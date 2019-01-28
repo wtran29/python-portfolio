@@ -184,6 +184,9 @@
     .scroll-top-wrapper {
         right: 4.5em!important;
     }
+    .blog-body {
+        padding: 0 1rem;
+    }
 }
 
 @media-only screen and (min-width: 376px) and (max-width: 425px) {

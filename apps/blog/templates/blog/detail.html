@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block blog_detail_link %}
-<li class="breadcrumb-item"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></li>
+<li class="breadcrumb-item"><a href="{{ blog.get_absolute_url }}">{{ blog.title|truncatechars:20 }}</a></li>
 {% endblock %}
 
 {% block content %}
@@ -55,7 +55,7 @@
                     allow="autoplay; encrypted-media" allowfullscreen></iframe>
             {% endif %}
         </div>
-        <div class="blog-body text-lg-left text-justify blog-detail-item"><p>{{blog.get_html}}</p></div>
+        <div class="blog-body text-lg-left text-justify blog-detail-item py-5 px-3"><p>{{blog.get_html}}</p></div>
 
     </div>
     <hr>
