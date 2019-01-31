@@ -7,14 +7,14 @@
 {% endblock title %}
 
 {% block blog_detail_link %}
-<li class="breadcrumb-item"><a href="{{ blog.get_absolute_url }}">{{ blog.title|truncatechars:20 }}</a></li>
+<li class="breadcrumb-item"><a href="{{ blog.get_absolute_url }}">{{ blog.title|truncatechars:15 }}</a></li>
 {% endblock %}
 
 {% block content %}
-<div class="container border shadow pt-5 px-3 col-12 my-5">
+<div class="container border shadow py-5 px-3 col-12 my-5">
 
     <div class="text-center">
-        <h1 class="blog-title px-3">{{blog.title}}</h1>
+        <h1 class="blog-title blog-detail-title px-3">{{blog.title}}</h1>
         {% if blog.user.get_full_name %}
         <p class="mb-0"><span class="font-italic mb-0 pr-1">Written by: </span>{{blog.user.get_full_name}}</p>
         {% else %}

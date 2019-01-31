@@ -180,26 +180,29 @@
     line-height: inherit;
 }
 
-@media-only screen and (max-width: 375px) {
-    .scroll-top-wrapper {
-        right: 4.5em!important;
+@media (max-width: 375px) {
+    .jumbotron-heading {
+        font-size: 2rem!important;
+    }
+    .breadcrumb-item a {
+        font-size: 0.75rem!important;
     }
 }
 
-@media-only screen and (min-width: 376px) and (max-width: 425px) {
-    .scroll-top-wrapper {
-        right: 3.5em!important;
+@media (min-width: 376px) and (max-width: 425px) {
+    .jumbotron-heading {
+        font-size: 2.5rem!important;
     }
 }
 
-@media-only screen and (min-width: 426px) and (max-width: 768px) {
-    .scroll-top-wrapper {
-        right: 3em;
+@media (min-width: 426px) and (max-width: 768px) {
+    .jumbotron-heading {
+        font-size: 3rem!important;
     }
 }
 
 @media (min-width: 769px) {
-    .blog-title {
+    .blog-detail-title {
         margin-left: 3rem!important;
         margin-right: 3rem!important;
     }

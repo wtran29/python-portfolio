@@ -8,7 +8,6 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404, Http404
 from django.utils import timezone
-from django.contrib.auth import get_user_model
 
 from .forms import BlogForm
 from .models import Blog
@@ -16,7 +15,6 @@ from .utils import get_header_text
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
 # Create your views here.
-User = get_user_model()
 
 
 def allblogs(request):
@@ -125,9 +123,6 @@ def create(request):
 
 
 def update(request, slug=None):
-    print(request.user.username)
-    print(Blog.objects.get(slug=slug).user)
-    print(request.user.username == Blog.objects.get(slug=slug).user.username)
     if not request.user.is_staff:
         raise Http404('Must be logged in and must be your own blog.')
     if request.user.username != Blog.objects.get(slug=slug).user.username:

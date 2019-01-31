@@ -21,9 +21,9 @@
         <p>If this sounds like you, then register <a href="{% url 'register' %}">here</a> or <a href="{% url 'login' %}">login</a> to get started. However, if you are looking for a talented Software Developer, contact <a href="mailto:wtran4hire@gmail.com">wtran4hire@gmail.com</a>.
         <p><a tabindex="0" type="link" class="btn btn-link text-danger p-0" data-trigger="focus" data-toggle="popover" title="Built with Python/Django" data-content="If you would like a walk through of how the backend of this site was built, I would be happy to do so. I have created RESTful APIs which could be tested.">Attn: Recruiters and potential employers</a></p>
         <p>Otherwise, feel free to explore the site. Must create an account or logged in to leave comments.</p>
-        <h1 class="blog-title pt-4 d-inline-block mr-2">Recent Posts</h1>
-        {% if request.user.is_authenticated %}<a class="btn btn-success mb-3" href="{% url 'blogs:create' %}" role="button"><i class="fas fa-plus"></i> Create</a>{% endif %}
-        <div class="col-sm-6 row">
+        <h1 class="blog-title pt-4">Recent Posts</h1>
+
+        <div class="col-sm-6 row d-inline-block mb-2">
             <form class="input-group" method="GET" action="">
                 <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Search for..."/>
                 <div class="input-group-append">
@@ -31,7 +31,7 @@
                 </div>
             </form>
         </div>
-
+        {% if request.user.is_authenticated %}<a class="btn btn-success mb-1" href="{% url 'blogs:create' %}" role="button"><i class="fas fa-plus"></i> Create</a>{% endif %}
         <table class="table table-hover mt-4">
             {% for blog in blogs %}
             <tr class="caption blog-detail-item">
