@@ -8,6 +8,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404, Http404
 from django.utils import timezone
+from django.contrib.auth import get_user_model
 
 from .forms import BlogForm
 from .models import Blog
@@ -15,6 +16,7 @@ from .utils import get_header_text
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
 # Create your views here.
+User = get_user_model()
 
 
 def allblogs(request):
@@ -102,10 +104,10 @@ def detail(request, slug=None):
 
 def create(request):
     if not request.user.is_staff:
-        raise Http404
+        raise Http404('Admin must grant permission to create blog.')
 
     if not request.user.is_authenticated:
-        raise Http404
+        raise Http404('Must be registered/logged in.')
 
     form = BlogForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -123,8 +125,13 @@ def create(request):
 
 
 def update(request, slug=None):
+    print(request.user.username)
+    print(Blog.objects.get(slug=slug).user)
+    print(request.user.username == Blog.objects.get(slug=slug).user.username)
     if not request.user.is_staff:
-        raise Http404
+        raise Http404('Must be logged in and must be your own blog.')
+    if request.user.username != Blog.objects.get(slug=slug).user.username:
+        raise Http404('You could only edit your own blogs!')
     instance = get_object_or_404(Blog, slug=slug)
     form = BlogForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
@@ -145,7 +152,7 @@ def update(request, slug=None):
 
 def delete(request, slug=None):
     if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
+        raise Http404('You could only delete your blogs!')
     instance = get_object_or_404(Blog, slug=slug)
     instance.delete()
     messages.success(request, "Successfully deleted.")

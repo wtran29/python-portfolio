@@ -6,7 +6,9 @@ from pagedown.widgets import PagedownWidget
 
 class BlogForm(forms.ModelForm):
     body = forms.CharField(widget=PagedownWidget(show_preview=False), label='Content')
-    pub_date = forms.DateField(widget=forms.SelectDateWidget, label='Publish Date')
+    pub_date = forms.DateField(widget=forms.SelectDateWidget(
+        attrs={'class': 'd-inline-block col-md-3 col-sm-3'}),
+        label='Publish Date')
 
     class Meta:
         model = Blog

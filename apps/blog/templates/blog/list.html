@@ -38,7 +38,7 @@
                 <th>
                     {% if blog.draft %}<span class="d-block" style="color:red;">Draft</span>{% endif %} {% if blog.pub_date > today %}<span class="d-block" style="color:green;">Future Post</span>{% endif %}
                     <h4 class="d-inline-block pt-2"><a class="blog-title-main" href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h4>
-                    <small class="blog-date-main text-muted px-2">{{ blog.updated_at|timesince }} ago</small>
+                    <small class="blog-date-main text-muted px-2">{{ blog.created_at|timesince }} ago</small>
                     {% if blog.user.get_full_name %}
                     <p class="blog-author">Written by: {{blog.user.get_full_name}}</p>
                     {% else %}

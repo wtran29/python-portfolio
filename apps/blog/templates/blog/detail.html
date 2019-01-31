@@ -14,7 +14,7 @@
 <div class="container border shadow pt-5 px-3 col-12 my-5">
 
     <div class="text-center">
-        <h1 class="blog-title">{{blog.title}}</h1>
+        <h1 class="blog-title px-3">{{blog.title}}</h1>
         {% if blog.user.get_full_name %}
         <p class="mb-0"><span class="font-italic mb-0 pr-1">Written by: </span>{{blog.user.get_full_name}}</p>
         {% else %}
@@ -55,7 +55,7 @@
                     allow="autoplay; encrypted-media" allowfullscreen></iframe>
             {% endif %}
         </div>
-        <div class="blog-body text-lg-left text-justify blog-detail-item py-5 px-3"><p>{{blog.get_html}}</p></div>
+        <div class="blog-body text-lg-left text-justify blog-detail-item py-5 px-2"><p>{{blog.get_html}}</p></div>
 
     </div>
     <hr>
@@ -98,7 +98,7 @@
                     <button type="submit" class="btn btn-primary"><i class="fas fa-comment"></i> Comment</button>
                 </form>
                 {% else %}
-                <p class="pt-2">You must login to comment</p>
+                <p class="py-2">You must login to comment</p>
                 {% endif %}
             </div>
 

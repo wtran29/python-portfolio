@@ -184,28 +184,31 @@
     .scroll-top-wrapper {
         right: 4.5em!important;
     }
-    .blog-body {
-        padding: 0 1rem;
-    }
-    .blog-content {
-        padding: 0 2rem!important;
-    }
 }
 
 @media-only screen and (min-width: 376px) and (max-width: 425px) {
     .scroll-top-wrapper {
         right: 3.5em!important;
     }
-    .blog-body {
-        padding: 0 1rem;
-    }
-    .blog-content {
-        padding: 0 2rem!important;
-    }
 }
 
 @media-only screen and (min-width: 426px) and (max-width: 768px) {
     .scroll-top-wrapper {
         right: 3em;
+    }
+}
+
+@media (min-width: 769px) {
+    .blog-title {
+        margin-left: 3rem!important;
+        margin-right: 3rem!important;
+    }
+    .blog-detail-item {
+        margin-left: 1rem!important;
+        margin-right: 1rem!important;
+    }
+    .blog-content {
+        padding-left: 4rem!important;
+        padding-right: 4rem!important;
     }
 }
