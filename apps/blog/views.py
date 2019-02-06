@@ -102,9 +102,11 @@ def detail(request, slug=None):
 
 def create(request):
     if not request.user.is_staff:
+        messages.error(request, "Admin must grant permission to create blog.")
         raise Http404('Admin must grant permission to create blog.')
 
     if not request.user.is_authenticated:
+        messages.error(request, "Must be registered/logged in.")
         raise Http404('Must be registered/logged in.')
 
     form = BlogForm(request.POST or None, request.FILES or None)
@@ -124,8 +126,10 @@ def create(request):
 
 def update(request, slug=None):
     if not request.user.is_staff:
+        messages.error(request, 'Must be logged in and must be your own blog.')
         raise Http404('Must be logged in and must be your own blog.')
     if request.user.username != Blog.objects.get(slug=slug).user.username:
+        messages.error(request, 'You could only edit your own blogs!')
         raise Http404('You could only edit your own blogs!')
     instance = get_object_or_404(Blog, slug=slug)
     form = BlogForm(request.POST or None, request.FILES or None, instance=instance)
@@ -147,6 +151,7 @@ def update(request, slug=None):
 
 def delete(request, slug=None):
     if not request.user.is_staff or not request.user.is_superuser:
+        messages.error(request, 'You could only delete your blogs!')
         raise Http404('You could only delete your blogs!')
     instance = get_object_or_404(Blog, slug=slug)
     instance.delete()

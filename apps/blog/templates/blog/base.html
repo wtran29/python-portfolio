@@ -73,6 +73,7 @@
 
 {% include "blog/messages.html" %}
 <div class="container">
+    {% if request.user.is_authenticated %}<p class="lead text-right">Signed in as {{ request.user }}</p>{% endif %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
         <li class="breadcrumb-item"><a href="{% url 'blogs:all' %}">Blogs</a></li>
@@ -91,8 +92,12 @@
     {% block content %}
     {% endblock content %}
 </div>
+<div class="text-center">
+    <a href="https://partners.uber.com/i/ppyekzxug"><img class="img-fluid rounded" src="{% static 'blog/images/uber-invite.jpg' %}" width="800"></a>
+</div>
 <section id="connect">
     <div class="container">
+        <hr>
         <div class="row">
             <div class="col-md-12 pt-5">
                 <h3 class="text-center pb-3">Connect with me</h3>
