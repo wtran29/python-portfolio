@@ -17,7 +17,7 @@
 }
 
 .jumbotron {
-    background-image: url('../../blog/images/news.jpg');
+    background-image: url('../../blog/images/blog.jpg');
     background-size: cover;
 }
 
@@ -32,10 +32,10 @@
 }
 
 .header-text {
-    text-shadow: 2px 2px 5px black,
-                 2px 2px 5px black;
+    text-shadow: 5px 5px 10px black,
+                 5px 5px 10px black;
     font-size: 20px;
-    color: gainsboro;
+    color: white;
 }
 
 .wmd-panel {
