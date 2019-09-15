@@ -21,8 +21,8 @@ def get_read_time(html_string):
 
 
 def get_header_text():
-    header_text = ['Believe in Billy', 'Trust my sources. I researched this shit.',
-                   'I AM THE BEST. Daily affirmation...',
+    header_text = ['Too legit to over fit', 'It\'s not a bug, it\'s an undocumented feature.',
+                   'Programming is like sex. One mistake and you have to support it for the rest of your life.',
                    'Sometimes I\'ll start a sentence and I don\'t even know where it\'s going. I just hope I find it along the way.',
-                   'Numbers don\'t lie, but then there are imaginary numbers.']
+                   'Believe in Billy and his blogs.']
     return header_text
